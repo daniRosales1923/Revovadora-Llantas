@@ -1,10 +1,88 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import './variables';
+@import './navbar';
+
+.description{
+    background-color: $lightnaranja;
+    color: $white;
+
+    &__title{
+        padding: 35px 20px;
+        font-size: $title;
+    }
+
+    .appearence, .mileage, .performance, .cost{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px ;
+    }
+
 }
 
-body,html{
-    font-family: 'Libre Baskerville', serif;
-    overflow-x:hidden;
+.icon{
+    color: $aqua;
+    font-size: 4.5em;
 }
+
+.item{
+    &__icon{
+        width: 120px;
+        height: 120px;
+        border-radius: 80px;
+        background-color: $white;
+    }
+}
+// <style type="text/css">
+//             html {
+//                 background: url("../assets/img/Fondo1.jpg");
+//                 background-repeat: no-repeat;
+//                 background-size: 100%;
+//             }
+//             #Login{
+//                position:absolute;
+//                width: 40%;
+//                height: 50%;
+//                left: 40%;
+//                margin-left: -100px;
+//                top: 20%;
+//                background: url("../assets/img/Fondo2.jpg");
+//                opacity: .8;
+//                text-align: center;
+//                border-radius:10px 10px 10px 10px;
+//             }
+//             input{
+//                 width: 60%;
+//                 height: 15%;
+//                 border-radius:10px 10px 10px 10px;
+//                 text-align: center;   
+//             }
+//             #lblLogin{
+//                 font: oblique bold 120% cursive;
+//                 font-size: 100%;
+//             }
+            
+//             @media only screen and (max-device-width : 320px) and (max-device-width : 480px) {
+//                html {
+//                 background: url("../assets/img/Fondo2.jpg");
+//                 background-repeat: no-repeat;
+//                 background-size: 200%;
+//             }
+//                  #Login{
+//                    position:absolute;
+//                    width: 80%;
+//                    height: 60%;
+//                    left: 5  0%;
+//                    margin-left: -100px;
+//                    top: 10%;
+//                    text-align: center;
+//                    border-radius:10px 10px 10px 10px;
+//                 }
+//                  input{
+//                 width: 100%;
+//                 height: 20%;
+//                 border-radius:10px 10px 10px 10px;
+//                 text-align: center;   
+//             }
+//             }
+                    
+//         </style>
