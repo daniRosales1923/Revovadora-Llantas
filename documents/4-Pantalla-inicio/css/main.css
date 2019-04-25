@@ -1,0 +1,64 @@
+#principal {
+  width: 800px;
+  height: auto;
+  overflow: hidden;
+  border: 5px solid #000;
+  margin: auto;
+  background: #126180; }
+
+header {
+  width: 800px;
+  height: 150px;
+  border: 0px solid #000;
+  float: right; }
+
+#logo {
+  width: 195px;
+  height: 195px;
+  border: 0px solid #000;
+  float: left; }
+
+.menu {
+  width: 600px;
+  height: 74px;
+  border: 0px solid #ccc;
+  float: right;
+  margin-top: 0px;
+  background: #FFBF00; }
+  .menu ul li {
+    list-style: none;
+    float: left; }
+    .menu ul li a {
+      text-decoration: none;
+      padding: 40px 17px;
+      border: 0px solid #ccc;
+      color: #126180; }
+      .menu ul li a:hover {
+        background: #126180;
+        color: #FFBF00; }
+
+.menu-name {
+  width: 600px;
+  height: 74px;
+  border: 0px solid #ccc;
+  float: right;
+  background: #126180; }
+  .menu-name h2 {
+    text-align: center;
+    color: #FFBF00; }
+
+#area-trabajo {
+  width: 600px;
+  height: 450px;
+  border: 0px solid;
+  margin-top: 10px;
+  float: right;
+  background: #FFBF00; }
+
+footer {
+  width: 600px;
+  height: 100px;
+  text-align: center;
+  margin: auto; }
+
+/*# sourceMappingURL=main.css.map */
