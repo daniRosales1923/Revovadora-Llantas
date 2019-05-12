@@ -1,8 +1,9 @@
 @import './variables';
 @import './navbar';
 
+
 .description{
-    background-color: $lightnaranja;
+    background-color: $lightorange;
     color: $white;
 
     &__title{
@@ -15,6 +16,67 @@
         flex-direction: column;
         align-items: center;
         margin-bottom: 10px ;
+    }
+}
+
+.information {
+    margin-bottom: 10px;
+    @media only screen and (min-width : 768px) {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &-store{
+        width: 100vw;
+        margin: 0;
+        @media screen and (min-width : 768px) {
+            margin: 0;
+        }
+
+        &__logo{
+            background-color: $lightorange;
+            width: 200px;
+            height: 200px;
+            border-radius: 274px;
+
+            @media only screen and (min-width : 768px) {
+               visibility: hidden;
+               height: 0;
+            }
+            @media only screen and (min-width : 1024px) {
+                visibility: visible;
+                height: 200px;
+            }
+
+            @media only screen and (min-width : 1440px) {
+                width: 400px;
+                height: 400px;
+                border-radius: 374px;
+
+                img{
+                    width: 245px; 
+                    height: 245px;
+                }
+            }
+        }
+    
+        &-content{
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px;
+
+            @media only screen and (min-width : 768px) {
+                width: 100%;
+            }
+
+            &__title{
+                font-size: .85em;
+                padding: 2px 0;
+                color: $white;
+                background-color: $orange;
+                
+            }
+        }
     }
 
 }
@@ -30,6 +92,36 @@
         height: 120px;
         border-radius: 80px;
         background-color: $white;
+    }
+
+    &-content{
+        text-align: justify;
+        font-size: .8em;
+        padding: 3px 15px;
+    }
+}
+
+.side-Wall{
+    max-height: 300px;
+    height: 650px;
+    background: url(../img/ParedLateral.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @media screen and (min-width : 768px) {
+        height: 420px;
+    }
+
+    @media only screen and (min-width : 1024px) {
+        height: 780px;
+        max-height: 450px;
+        background: url(../img/ParedLateral.jpg);
+        background-size: cover;
+    }
+
+    @media only screen and (min-width : 1440px) {
+        max-height: 625px;
     }
 }
 // <style type="text/css">

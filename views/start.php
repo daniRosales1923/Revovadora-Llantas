@@ -48,9 +48,35 @@
             <div class="item__icon row middle-xs center-xs"><i class="icon fas fa-dollar-sign"></i></div>
             <span>COSTO</span>
         </div>
-    </div> 
+    </div>
+    <div class="information row ">
+        <div class="side-Wall col-xs-12 col-sm-8" >
+        </div>
+
+        <div class="information-store row middle-xs center-xs col-xs-12 col-sm-4">
+            <div class="information-store__logo row middle-xs center-xs">
+                <img src="../assets/img/tire-shop.png" alt="shop" width="130px" height="130px">
+            </div>
+            <div class="information-store-content col-sm-12">
+                <span class="information-store-content__title" >SI SÓLO NECESITAS LAS LLANTAS</span>
+                <div>
+                    <p class="item-content"> 
+                        Ve a una tienda departamental o tienda exclusiva donde vendan 
+                        neumáticos, irás a lo seguro sin perder el tiempo.
+                    </p>
+                </div>
+                <span class="information-store-content__title" >SI NECESITAS EL SERVICIO COMPLETO</span>
+                <div>
+                    <p class="item-content">
+                        Una llantera será la mejor opción ya que muchas veces cuando compras una 
+                        llanta nueva no te cobran por la instalación, alineación y balanceo.                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../js/index.js"></script>
+
     </body>
 </html>
