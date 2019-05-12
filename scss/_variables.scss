@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,html{
+    font-family: 'Libre Baskerville', serif;
+    overflow-x:hidden;
+}
+
+$ligthgray: rgb(156, 153, 153);
+$gray: #263238;
+$white:#FFFFFF;
+$blue: #007bff;
+$lightorange: #ff9c00;
+$orange: #ea441c;
+$aqua: #00bbca;
+$red: #de0309;
+
+$title: 1.2em;
+$title-md: 2em;
+$title-lg: 2.8em;
+$subtitle: 1em;
+$subtitle-lg: 1.25em;
+$parrafo: .8em;
+$parrafo-lg: .95em;
