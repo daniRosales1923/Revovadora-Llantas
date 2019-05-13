@@ -57,14 +57,16 @@
                     <div class="title">
                         <h2 class="item_title">Renovadora de llantas</h2>
                     </div>
-                    <nav class="navbar">
+                    <nav class="navbar" id="menu">
                         <ul>
-                            <li><a href="">INICIO</a></li>
-                            <li><a href="">SERVICIOS</a></li>
-                            <li><a href="">CLIENTES</a></li>
-                            <li><a href="">CONTACTO</a></li>
-                            <li><a href="">AYUDA</a></li>
+                            <li><a href="">ENTRADAS</a></li>
+                            <li><a href="">CONCENTRADO RENOVADO</a></li>
+                            <li><a href="">VENTAS</a></li>
+                            <li><a href="">REPORTES</a></li>
+                            <li><a href="">USUARIOS</a></li>
                         </ul>
+
+                        <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger">
                     </nav>
                 </header>
                 <div class="area_trabajo">
