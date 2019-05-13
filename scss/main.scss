@@ -1,0 +1,94 @@
+@import './variables';
+
+.main{
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	height: 92vh;
+	background: $Azul;
+
+
+	.section{
+		&_logo{
+			width: 15vw;
+			height: 92vh;
+		}
+
+		&_content{
+			width: 80vw;
+			display: flex;
+			flex-direction: column;
+
+			&-nav{
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				.title{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 100%;
+					height: 15vh;
+					background: #126180;
+				}
+	
+				.navbar{
+					display: flex;
+					justify-content: center;
+					width: 100%;
+					height: 64px;
+					background: #FFBF00;
+					ul{
+						display: flex;
+						li{
+							display: flex;
+							flex-direction: row;
+							list-style: none;
+							a{
+								text-decoration: none;
+								padding: 25px 17px;
+								color: #126180;
+								&:hover{
+									background: #126180;
+									color: #FFBF00;
+								}
+							}
+						}		
+					}
+				}
+			}
+			.area_trabajo{
+				width: 100%;
+				height: 450px;
+				margin-top: 10px;
+				background: $Amarillo;
+			}
+		}
+
+
+	}
+}
+
+.footer{
+	width: 100vw;
+	text-align: center;
+	margin: 5px 0 0 0 ;
+}
+
+.item{
+
+	&_title{
+		color: #FFBF00;
+	}
+}
+
+// #logo{
+// 	width: 195px;
+// 	height: 195px;
+// 	border: 0px solid #000;
+// 	float: left;
+// }
+
