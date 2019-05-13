@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
     crossorigin="anonymous">
-    <link rel="stylesheet" href = "../assets/css/main.css">
+    <link rel="stylesheet" href = "../assets/css/main.1.css">
     </head>
 
     <body>
@@ -48,8 +48,9 @@
         <section class="main">
             <div class="section_logo">
                 <div id="logo">
-					<img src="../assets/img/logo2.png" width="195" height="195">
+                    <img src="../assets/img/logo2.png" width="195" height="195">
 				</div>
+                <h2 class="item_title-2">Renovadora de llantas</h2>
             </div>
 
             <div class="section_content">
@@ -57,7 +58,8 @@
                     <div class="title">
                         <h2 class="item_title">Renovadora de llantas</h2>
                     </div>
-                    <nav class="navbar" id="menu">
+                    <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
+                    <nav class="navigation">
                         <ul>
                             <li><a href="">ENTRADAS</a></li>
                             <li><a href="">CONCENTRADO RENOVADO</a></li>
@@ -65,8 +67,6 @@
                             <li><a href="">REPORTES</a></li>
                             <li><a href="">USUARIOS</a></li>
                         </ul>
-
-                        <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger">
                     </nav>
                 </header>
                 <div class="area_trabajo">
