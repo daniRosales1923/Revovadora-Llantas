@@ -10,8 +10,8 @@
 
 	.section{
 		&_logo{
-		width: 15vw;
-		height: 92vh;
+			width: 15vw;
+			height: 92vh;
 		}
 
 		&_content{
@@ -63,9 +63,7 @@
 			.area_trabajo{
 				width: 100%;
 				height: 450px;
-				border: 0px solid;
 				margin-top: 10px;
-				float: right;
 				background: $Amarillo;
 			}
 		}
@@ -93,3 +91,4 @@
 // 	border: 0px solid #000;
 // 	float: left;
 // }
+
