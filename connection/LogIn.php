@@ -13,7 +13,14 @@
     <body>
         <div class="login">
             <div id ="Login" class="login-card" >
-                <h1 class="login-lbl" id="lblLogin">Inicio sesión</h1>                     
+
+            <div class="login_header">
+                <div class="login_header-user">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1 class="login-lbl" id="lblLogin">Inicio sesión</h1>
+            </div>
+
                  <form method="POST" action="VerificaLogin.php">
                      <div class="login__form">
                          <div class="form-group" mb-2>
