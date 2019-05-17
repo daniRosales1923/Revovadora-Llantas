@@ -48,8 +48,9 @@
         <section class="main">
             <div class="section_logo">
                 <div id="logo">
-					<img src="../assets/img/logo2.png" width="195" height="195">
+                    <img src="../assets/img/logo2.png" width="195" height="195">
 				</div>
+                <h2 class="item_title-2">Renovadora de llantas</h2>
             </div>
 
             <div class="section_content">
@@ -57,16 +58,15 @@
                     <div class="title">
                         <h2 class="item_title">Renovadora de llantas</h2>
                     </div>
-                    <nav class="navbar" id="menu">
+                    <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
+                    <nav class="navigation">
                         <ul>
                             <li><a href="">ENTRADAS</a></li>
                             <li><a href="">CONCENTRADO RENOVADO</a></li>
-                            <li><a href="">VENTAS</a></li>
-                            <li><a href="">REPORTES</a></li>
-                            <li><a href="">USUARIOS</a></li>
+                            <li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
+                            <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
+                            <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
                         </ul>
-
-                        <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger">
                     </nav>
                 </header>
                 <div class="area_trabajo">
