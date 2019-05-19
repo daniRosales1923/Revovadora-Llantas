@@ -1,10 +1,180 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import './variables';
+@import './navbar';
+
+
+.description{
+    background-color: $lightorange;
+    color: $white;
+
+    &__title{
+        padding: 35px 20px;
+        font-size: $title;
+    }
+
+    .appearence, .mileage, .performance, .cost{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px ;
+    }
 }
 
-body,html{
-    font-family: 'Libre Baskerville', serif;
-    overflow-x:hidden;
+.information {
+    margin-bottom: 10px;
+    @media only screen and (min-width : 768px) {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &-store{
+        width: 100vw;
+        margin: 0;
+        @media screen and (min-width : 768px) {
+            margin: 0;
+        }
+
+        &__logo{
+            background-color: $lightorange;
+            width: 200px;
+            height: 200px;
+            border-radius: 274px;
+
+            @media only screen and (min-width : 768px) {
+               visibility: hidden;
+               height: 0;
+            }
+            @media only screen and (min-width : 1024px) {
+                visibility: visible;
+                height: 200px;
+            }
+
+            @media only screen and (min-width : 1440px) {
+                width: 400px;
+                height: 400px;
+                border-radius: 374px;
+
+                img{
+                    width: 245px; 
+                    height: 245px;
+                }
+            }
+        }
+    
+        &-content{
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px;
+
+            @media only screen and (min-width : 768px) {
+                width: 100%;
+            }
+
+            &__title{
+                font-size: .85em;
+                padding: 2px 0;
+                color: $white;
+                background-color: $orange;
+                
+            }
+        }
+    }
+
 }
+
+.icon{
+    color: $aqua;
+    font-size: 4.5em;
+}
+
+.item{
+    &__icon{
+        width: 120px;
+        height: 120px;
+        border-radius: 80px;
+        background-color: $white;
+    }
+
+    &-content{
+        text-align: justify;
+        font-size: .8em;
+        padding: 3px 15px;
+    }
+}
+
+.side-Wall{
+    max-height: 300px;
+    height: 650px;
+    background: url(../img/ParedLateral.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @media screen and (min-width : 768px) {
+        height: 420px;
+    }
+
+    @media only screen and (min-width : 1024px) {
+        height: 780px;
+        max-height: 450px;
+        background: url(../img/ParedLateral.jpg);
+        background-size: cover;
+    }
+
+    @media only screen and (min-width : 1440px) {
+        max-height: 625px;
+    }
+}
+// <style type="text/css">
+//             html {
+//                 background: url("../assets/img/Fondo1.jpg");
+//                 background-repeat: no-repeat;
+//                 background-size: 100%;
+//             }
+//             #Login{
+//                position:absolute;
+//                width: 40%;
+//                height: 50%;
+//                left: 40%;
+//                margin-left: -100px;
+//                top: 20%;
+//                background: url("../assets/img/Fondo2.jpg");
+//                opacity: .8;
+//                text-align: center;
+//                border-radius:10px 10px 10px 10px;
+//             }
+//             input{
+//                 width: 60%;
+//                 height: 15%;
+//                 border-radius:10px 10px 10px 10px;
+//                 text-align: center;   
+//             }
+//             #lblLogin{
+//                 font: oblique bold 120% cursive;
+//                 font-size: 100%;
+//             }
+            
+//             @media only screen and (max-device-width : 320px) and (max-device-width : 480px) {
+//                html {
+//                 background: url("../assets/img/Fondo2.jpg");
+//                 background-repeat: no-repeat;
+//                 background-size: 200%;
+//             }
+//                  #Login{
+//                    position:absolute;
+//                    width: 80%;
+//                    height: 60%;
+//                    left: 5  0%;
+//                    margin-left: -100px;
+//                    top: 10%;
+//                    text-align: center;
+//                    border-radius:10px 10px 10px 10px;
+//                 }
+//                  input{
+//                 width: 100%;
+//                 height: 20%;
+//                 border-radius:10px 10px 10px 10px;
+//                 text-align: center;   
+//             }
+//             }
+                    
+//         </style>
