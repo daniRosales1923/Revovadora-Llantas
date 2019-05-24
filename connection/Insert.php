@@ -25,7 +25,7 @@
 		function AltaCascos($prmFolioEntrada, $prmDescripcion,$prmMarca, $prmModelo, $prmCliente,$prmTrabajo){
 			global $ClsCn;
 			$Result ;
-			$query = "insert into datossllantas  values($prmFolioEntrada, '$prmDescripcion',$prmMarca, $prmModelo, $prmCliente,$prmTrabajo,'AC')";
+			$query = "insert into datossllantas (folioentrada, descripcion, idmarca, idmodelo, idcliente, idtrabajo, status) values($prmFolioEntrada, '$prmDescripcion',$prmMarca, $prmModelo, $prmCliente,$prmTrabajo,'AC')";
 			$ClsCn->Conecta();
 			$Rst = $ClsCn->EjecutaConsulta($query);
 			if(!$Rst){
@@ -40,7 +40,7 @@
 		function AltaConcentrados($prmUsuarioAlta,$prmComentario){
 			global $ClsCn;
 			$Result ;
-			$query = "insert into concentradorenovado values($prmUsuarioAlta,'$prmComentario',current_date,'AC')";
+			$query = "insert into concentradorenovado (idusuario, comentario, fecha, status) values($prmUsuarioAlta,'$prmComentario',current_date,'AC')";
 			$ClsCn->Conecta();
 			$Rst = $ClsCn->EjecutaConsulta($query);
 			if(!$Rst){
@@ -67,7 +67,7 @@
 			$ClsCn->Desconecta();
 			//se hace insercion
 
-			$query = "insert into concentradorenovadodetalle values($prmFolioConcentrado, $IDdetalle, $prmIdLlanta, $prmTrabajo, '$Comentario')";
+			$query = "insert into concentradorenovadodetalle (idconentrado, iddetalle, idllanta, idtrabajo, comentario) values($prmFolioConcentrado, $IDdetalle, $prmIdLlanta, $prmTrabajo, '$Comentario')";
 			$ClsCn->Conecta();
 			$Rst = $ClsCn->EjecutaConsulta($query);
 			if(!$Rst){

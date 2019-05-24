@@ -12,10 +12,12 @@ session_start();
         $arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
         $IdUsr = $arr["idusuario"];
         if ($IdUsr != ""){
+				/* variables de sesion para los usuarios */
                 $_SESSION['idusr'] = $arr['idusuario'];
                 $_SESSION['nombre'] = $arr['nombre'];
                 $_SESSION['apellido'] = $arr['apellidopaterno'];
                 $_SESSION['usuario'] = $arr['usuario'];
+				
                 $_SESSION['start'] = time();
                 $_SESSION['expire'] = $_SESSION['start'] + (10 * 60) ;
                 header('Location: Menu.php');

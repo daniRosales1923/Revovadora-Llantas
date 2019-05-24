@@ -2,6 +2,8 @@
     session_start();
     unset($_SESSION['nombre']);
     include_once("conecta.php");
+    include_once("Consultas.php");
+     include_once("Inserta.php");
 	global $ClsCn;
 	$ClsCn = new ConexionDatos();
 	
