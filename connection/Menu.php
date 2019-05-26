@@ -55,7 +55,7 @@
                     <nav class="navigation">
                         <ul>
                             <li><a href="Entradas.php">ENTRADAS</a></li>
-                            <li><a href="ConcentradoRenovado.php">CONCENTRADO RENOVADO</a></li>
+                            <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
                             <li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
                             <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
                             <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>

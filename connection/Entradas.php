@@ -48,18 +48,20 @@
                     <nav class="navigation">
                         <ul>
                             <li><a href="Entradas.php">ENTRADAS</a></li>
-                            <li><a href="">CONCENTRADO RENOVADO</a></li>
+                            <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
                             <li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
                             <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
                             <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+                            <li><a href="login.php">SALIR <i class="fas fa-stop"></i></a></li>
                         </ul>
                     </nav>
                 </header>
                 <div class="area_trabajo">
+                <center><a> ENTRADAS </a></center>
 <form id="Entrada" method="POST">
 <table>
   <tr>
-    <td><label id= "lblFolio" name = "lblFolio" >Folio entrada</label></td>
+    <td><label id= "lblFolio" name = "lblFolio" >Folio</label></td>
     <td><label id= "lblFolio" name = "lblFolio" >Fecha</label></td>
     <td><label id= "lblStatus" name = "lblStatus" >Status</label></td>
     <td><label id= "lblUsuario" name= "lblUsuario"> Usuario </label> </td>
@@ -94,7 +96,30 @@
 <input type="submit" name="Guardar" value="Guardar" >
 <input type="submit" name="Limpiar" value="Limpiar" >
 </form>
+<div>
 
+<?PHP 
+	if (isset($_REQUEST['ddlMarca'])){
+			$_SESSION["Marca"] = $_REQUEST['ddlMarca'];
+			if ( isset($_REQUEST['ddlModelo'])){
+				$_SESSION["Modelo"] = $_REQUEST['ddlModelo'];
+				if (isset($_REQUEST['GuardaLllanta'])){
+					if (!GuardaLlanta())
+						echo "<h1> ERROR</h1> ";
+					else
+						formularioLlantas($_SESSION["Folio"]);	
+				}
+				else
+					formularioLlantas($_SESSION["Folio"]);
+			}
+			else
+				formularioLlantas($_SESSION["Folio"]);
+		}
+		else
+			formularioLlantas($_SESSION["Folio"]);
+	LLenaGWLanntas($_SESSION["Folio"]);	
+?>
+</div>
  </div>
 
             </div>
@@ -102,6 +127,7 @@
         </section>
 		<footer class="footer">
 				<p class="footer-text">
+               
                 <i class="fas fa-copyright"></i> Todos los derechos reservados - Instituto Tecnologico de Orizaba. <br>
 					Diseñado por alumnos del plantel.
 				</p>
@@ -114,7 +140,7 @@
 		Guardar();
 	if (isset($_REQUEST['Limpiar']))
 		Limpiar();
-			
+	
 	function Guardar(){
 		global $ClsCn, $Ins, $idUsr;
 		$cliente = $_REQUEST['ddlCliente'];
@@ -153,7 +179,22 @@
 			header("location:Entradas.php");
 		}
 	}
-	
+	function GuardaLlanta(){
+		global $ClsCn, $Ins, $idUsr;
+		$Numserie = $_REQUEST['txtNumSerie'];
+		$trabajo = $_REQUEST['ddlTrabajo'];
+		$Folio = "";
+		if ($Ins->AltaCascos($_SESSION["Folio"], $Numserie,$_SESSION["Marca"],$_SESSION["Modelo"],$_SESSION["idcliente"],$trabajo)==1){
+			$ClsCn->Desconecta();
+			$_SESSION["Marca"]="";
+			$_SESSION["Modelo"]="";
+			return true;
+			}
+		else
+			return false;
+		
+	}
+
 	function LlenaComboCliente($cliente){
 		global $ClsCn, $Consultas;
 		$ClsCn->conecta();
@@ -182,7 +223,148 @@
 		$_SESSION["idcliente"] = "";
 		$_SESSION["status"]  = "";
 		$_SESSION["comentario"]  = "";
+		$_SESSION["Marca"] ="";
+		$_SESSION["Modelo"] ="";
 		header("location:Entradas.php");
 	}
 
+
+	function formularioLlantas($prmFolio){
+	if(isset($_REQUEST["Marca"]))
+		$marca = $_REQUEST["Marca"];
+		if($prmFolio!=""){
+			echo '<form id="LLantas"> 
+				<table>
+					  <tr>
+						<td><label id= "lblMatricula" name = "lblFolio" >Numero de serie</label></td>
+						<td><label id= "lblMarca" name = "lblFolio" >Marca</label></td>
+						<td><label id= "lblModelo" name = "lblStatus" >Modelo</label></td>
+						<td><label id= "Trabajo" name= "lblUsuario"> Trabajo </label> </td>
+						<td> </td>
+					  </tr>
+					  <tr>
+						<td><input type="text" name="txtNumSerie"> </td>
+						<td>'. ComboMarcas() .'</td>
+						<td>'. ComboModelo($_SESSION["Marca"]).'</td>
+						<td>'. ComboTrabajo($_SESSION["Modelo"]).'</td>
+						<td> <input type="submit" name="GuardaLllanta" value="Agregar" ></td>
+					  </tr>
+				</table>
+			</form>';
+		}
+	}
+	
+	function ComboMarcas(){
+		global $ClsCn;
+		$Marca="";
+		if ($_SESSION["Marca"]!="" and $_SESSION["Marca"] !="-1")
+			$Marca = $_SESSION["Marca"];
+		$Consulta ="Select ma.idmarca, ma.marca, ma.status from marcas ma where ma.status ='AC' ";
+		$ClsCn->conecta();
+		$Rst = $ClsCn->EjecutaConsulta($Consulta);
+		$Combo = "";
+		$i=0;
+		if(pg_num_rows($Rst)>0){
+			$Combo = '<select onchange="this.form.submit()" name ="ddlMarca">';
+			while($row=pg_fetch_array($Rst)){
+				if($i==0)
+					$Combo .="<option value='-1'> --Seleccionar--</option>\n";
+				if ($Marca ==$row['idmarca'])
+					$Combo .="<option value='".$row['idmarca']."' selected>(".$row['idmarca'].")".$row['marca']."</option>\n";
+				else
+					$Combo .="<option value='".$row['idmarca']."'>(".$row['idmarca'].")".$row['marca']."</option>\n";
+				$i++;
+			}
+			$Combo .="</select>";
+		$ClsCn->desconecta();
+		
+		return $Combo;
+		}
+	}
+		function ComboModelo($Marca){
+		global $ClsCn;
+		$Modelo="";
+		if ($_SESSION["Modelo"]!="" and $_SESSION["Modelo"] !="-1")
+			$Modelo = $_SESSION["Modelo"];
+		$Combo = "<select onchange='this.form.submit()' name ='ddlModelo'>";
+		if ($Marca !="" and $Marca !="-1"){
+			$Consulta ="Select m.idmodelo, m.idmarca, m.modelo, ma.marca, m.status from modelo m, marcas ma where m.idmarca = ma.idmarca and m.status ='AC' and m.idmarca=$Marca ";
+			$ClsCn->conecta();
+			$Rst = $ClsCn->EjecutaConsulta($Consulta);
+			$i=0;
+			if(pg_num_rows($Rst)>0){
+				while($row=pg_fetch_array($Rst)){
+					if($i==0)
+						$Combo .="<option value='-1'> --Seleccionar--</option>\n";
+					if ($Modelo ==$row['idmodelo'])
+						$Combo .="<option value='".$row['idmodelo']."' selected>(".$row['idmodelo'].")".$row['modelo']."</option>\n";
+					else
+						$Combo .="<option value='".$row['idmodelo']."' >(".$row['idmodelo'].")".$row['modelo']."</option>\n";
+					$i++;
+				}
+				
+			$ClsCn->desconecta();
+			}
+		}
+		$Combo .="</select>";
+		return $Combo;
+	}
+	
+	function  ComboTrabajo($Modelo){
+		global $ClsCn;
+		$Combo = "<select  name ='ddlTrabajo'>";
+		if ($Modelo !="" and $Modelo !="-1"){
+			$Consulta = "select t.idtrabajo, t.desctrabajo, t.status, t.idmodelo, m.modelo from trabajo t, modelo m where t.idmodelo = m.idmodelo and m.idmodelo = $Modelo ";
+			$ClsCn->conecta();
+			$Rst = $ClsCn->EjecutaConsulta($Consulta);
+			$i=0;
+			if(pg_num_rows($Rst)>0){
+				while($row=pg_fetch_array($Rst)){
+					if($i==0)
+						$Combo .="<option value='-1'> --Seleccionar--</option>\n";
+					$Combo .="<option value='".$row['idtrabajo']."' >".$row['desctrabajo']."</option>\n";
+					$i++;
+				}
+				
+			$ClsCn->desconecta();
+			}
+		}
+		$Combo .="</select>";
+		return $Combo;
+	}
+	function LLenaGWLanntas($prmFolio){
+		global $ClsCn, $Consultas;
+	
+		if($prmFolio!=""){
+			$Consulta = $Consultas->DatosLlantas('',$prmFolio,'');
+			$ClsCn->conecta();
+			$result = $ClsCn->EjecutaConsulta($Consulta);
+			$rows =pg_numrows($result);
+			$tabla = "<table border='2' height='100%' width='100%'>\n
+					<thead>\n
+					<tr bgcolor='blue' >\n
+					<th>  idllanta  </th>\n
+					<th>  numero de serie  </th>\n
+					<th>  marca  </th>\n
+					<th>  modelo  </th>\n
+					<th>  trabajo  </th>\n
+					</tr>\n
+					</thead>\n";
+			for($i=0;$i<$rows;$i++){
+				$arr = pg_fetch_array($result, $i, PGSQL_ASSOC);
+				$tabla .="<tr>\n".
+						"<td>".$arr["idllanta"]."</td>\n".
+						"<td>".$arr["descripcion"]."</td>\n".
+						"<td>".$arr["marca"]."</td>\n".
+						"<td>".$arr["modelo"]."</td>\n".
+						"<td>".$arr["desctrabajo"]."</td>\n".
+						"</tr>\n";
+	
+			}
+			$tabla .="</table>";
+			echo $tabla;
+		}
+	}
+	
+	
 ?>

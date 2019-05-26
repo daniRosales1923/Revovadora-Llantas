@@ -48,7 +48,7 @@
                     <nav class="navigation">
                         <ul>
                             <li><a href="Entradas.php">ENTRADAS</a></li>
-                            <li><a href="ConcentradoRenovado.php">CONCENTRADO RENOVADO</a></li>
+                            <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
                             <li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
                             <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
                             <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
@@ -89,22 +89,19 @@
                     
                     <?PHP 
                         if ( isset($_REQUEST['txtidLLanta'])){
-                            $_SESSION["idllanta"] = $_REQUEST['txtidLLanta'];
+                            $_SESSION["idllantaCR"] = $_REQUEST['txtidLLanta'];
                             if (isset($_REQUEST['GuardaLllanta'])){
                                 if (!GuardaDetalle()){
                                     echo "<h1> ERROR</h1> ";
-									formularioLlantas($_SESSION["idllanta"]);
 								}
-                                else
-                                    formularioLlantas($_SESSION["idllanta"]);	
                             }
 							if(isset($_REQUEST['LimpiarLlanta'])){
-								$_SESSION["idllanta"]="";
+								$_SESSION["idllantaCR"]="";
 							}
-							 formularioLlantas($_SESSION["idllanta"]);
+							 formularioLlantas($_SESSION["idllantaCR"]);
                         }
                         else
-                            formularioLlantas($_SESSION["idllanta"]);
+                            formularioLlantas($_SESSION["idllantaCR"]);
                         llenaGWDetalle($_SESSION["FolioCR"]);	
                     ?>
                      </div>
@@ -140,7 +137,7 @@
 				 $Folio = $arr["folio"];
 			}
 			$ClsCn->Desconecta();
-			Restaura($Folio);
+				Restaura($Folio);
 			}
 		else
 			echo "<h1>Error</h1>";
@@ -160,7 +157,7 @@
 			$_SESSION["statusCR"]  = $arr['status'];
 			$_SESSION["comentarioCR"]  = $arr['comentario'];
 			$ClsCn->Desconecta();
-			header("location:ConcentradoRenovado.php");
+			header("location:concentradorenovado.php");
 		}
 	}
 	function GuardaDetalle(){
@@ -170,7 +167,7 @@
 		$observacion =  $_REQUEST['txtObservacion'];
 		$trabajo = $_REQUEST['ddlTrabajo'];
 		$Folio = "";
-		if ($Ins->AltaDetalleContrado($_SESSION["Folio"], $idllanta, $trabajo,$observacion)>0){
+		if ($Ins->AltaDetalleContrado($_SESSION["FolioCR"], $idllanta, $trabajo,$observacion)>0){
 			$ClsCn->Desconecta();
 			return true;
 			}
@@ -187,13 +184,13 @@
 		$_SESSION["MarcaCR"] ="";
 		$_SESSION["ModeloCR"] ="";
 		$_SESSION["idllantaCR"]="";
-		header("location:ConcentradoRenovado.php");
+		header("location:concentradorenovado.php");
 	}
 
 
 	function formularioLlantas($prmidllanta){
 		global $ClsCn, $Consultas;
-		if($_SESSION["Folio"]!=""){
+		if($_SESSION["FolioCR"]!=""){
 			$marca = $modelo = $matricula = $trabajo = $idmodelo = "";
 			if($prmidllanta !=""){
 				
@@ -224,7 +221,7 @@
 							<td> </td>
 						  </tr>
 						  <tr>
-						    <td> <input type="text" name="txtidLLanta" onchange="this.form.submit()" value = "'.$_SESSION["idllanta"].'"></td>
+						    <td> <input type="text" name="txtidLLanta" onchange="this.form.submit()" value = "'.$_SESSION["idllantaCR"].'"></td>
 							<td> <input type="text" name = "txtNumSerie" value="'.$matricula.'" readonly></td>
 							<td><input type="text" name="txtMarca" value="'.$marca.'" readonly></td>
 							<td><input type="text" name="txtModelo" value="'. $modelo.'" readonly></td>
