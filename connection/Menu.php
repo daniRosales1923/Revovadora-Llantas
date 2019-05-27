@@ -47,39 +47,42 @@
 
     <body>
 
-        <section class="main">
-            <div class="section_logo">
-                <div id="logo">
-                    <img src="../assets/img/logo2.png" width="195" height="195">
-				</div>
-                <h2 class="item_title-2">Renovadora de llantas</h2>
+      <section class="main">
+        <div class="section_logo">
+            <div class="navbar-logo" > 
+                <h1 class="navbar-logo__title">Tire</h1>
+                <p class="navbar-logo__subtitle">RENOVATOR</p>
             </div>
+            <h2 class="item_title-2">Renovadora de llantas</h2>
+        </div>
 
-            <div class="section_content">
-                <header class="section_content-nav">
-                    <div class="title">
-                        <h2 class="item_title">Renovadora de llantas</h2>
+        <div class="section_content">
+            <header class="section_content-nav">
+                <input class="burger-check" id="burger-check" type="checkbox">
+                <label for="burger-check" class="burger"></label>
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="Entradas.php">ENTRADAS</a></li>
+                        <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
+                        <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
+                        <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
+                        <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+                        <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="area_trabajo">
+                <header class="start row bottom-xs center-xs">
+                    <div class="start-logo" > 
+                        <h1 class="start-logo__title">Tire</h1>
+                        <p class="start-logo__subtitle">RENOVATOR</p>
                     </div>
-                    <input class="burger-check" id="burger-check" type="checkbox">
-                    <label for="burger-check" class="burger"></label>
-                    <nav class="navigation">
-                        <ul>
-                            <li><a href="Entradas.php">ENTRADAS</a></li>
-                            <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
-                            <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
-                            <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
-                            <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
-                            <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
-                        </ul>
-                    </nav>
                 </header>
-                <div class="area_trabajo">
-                    Esta es un area de trabajo
-                </div>
-
             </div>
+
+        </div>
             
-        </section>
+    </section>
 		<footer class="footer">
 				<p class="footer-text">
                 <i class="fas fa-copyright"></i> Todos los derechos reservados - Instituto Tecnologico de Orizaba. <br>

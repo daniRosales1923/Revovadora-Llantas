@@ -1,5 +1,6 @@
 @import './main.scss';
 @import './variables';
+@import './logo';
 .entry {
     margin-top: 30px;
     display: flex;
@@ -67,10 +68,10 @@
         margin: 25px 5px;
     }
     &-save {
-        background-color: $blue;
+        background-color: $orange;
     }
     &-clean {
-        background-color: $blue;
+        background-color: $orange;
     }
 }
 

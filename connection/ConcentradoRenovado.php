@@ -47,22 +47,20 @@
 <body>
 	<section class="main">
 		<div class="section_logo">
-			<div id="logo">
-				<img src="../assets/img/logo2.png" width="195" height="195">
+			<div class="navbar-logo" > 
+				<h1 class="navbar-logo__title">Tire</h1>
+				<p class="navbar-logo__subtitle">RENOVATOR</p>
 			</div>
 		</div>
 
 		<div class="section_content">
 			<header class="section_content-nav">
-				<div class="title">
-					<h2 class="item_title">Renovadora de llantas</h2>
-				</div>
 				<input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
 				<nav class="navigation">
 					<ul>
 						<li><a href="Entradas.php">ENTRADAS</a></li>
-						<li class="active"><a style="color: #FFBF00;" href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
-						<li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
+						<li class="active"><a style="color: #9e9e9ed6;" href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
+						<li><a href="Ventas.php">VENTA <i class="fas fa-dollar-sign"></i></a></li>
 						<li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
 						<li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
 						<li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>

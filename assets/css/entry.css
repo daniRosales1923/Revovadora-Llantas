@@ -10,6 +10,35 @@ html {
   font-family: 'Libre Baskerville', serif;
   overflow-x: hidden; }
 
+.navbar-logo {
+  position: relative;
+  color: #FFFFFF;
+  padding: 20px;
+  border: 2px solid #FFFFFF;
+  border-bottom: 0; }
+  .navbar-logo__title {
+    font-size: 3.95em;
+    letter-spacing: 10px; }
+  .navbar-logo__subtitle {
+    position: relative;
+    top: 29px;
+    color: #FFFFFF;
+    text-align: center; }
+    .navbar-logo__subtitle::before, .navbar-logo__subtitle::after {
+      content: '';
+      position: absolute;
+      width: 44px;
+      height: 2px;
+      background-color: currentColor;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .navbar-logo__subtitle::before {
+      left: 131px; }
+    .navbar-logo__subtitle::after {
+      right: 131px; }
+
 .main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -26,7 +55,7 @@ html {
   align-items: center;
   width: 100vw;
   height: 92vh;
-  background: #00bbca; }
+  background: #007bff; }
   .main .section_logo {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -35,14 +64,15 @@ html {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
     width: 100vw;
-    height: 15vh; }
+    height: 15vh;
+    margin-top: 20px; }
     .main .section_logo img {
       width: 80px;
       height: 80px; }
@@ -79,6 +109,7 @@ html {
     -ms-flex-direction: column;
     flex-direction: column; }
     .main .section_content-nav {
+      margin: 4vh 0;
       width: 100%;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -180,7 +211,7 @@ html {
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: rgba(117, 116, 113, 0.95);
+        background-color: #263238;
         max-height: 0;
         -webkit-transition: max-height 0.5s ease-out;
         -o-transition: max-height 0.5s ease-out;
@@ -198,8 +229,6 @@ html {
             width: 100%;
             height: 50px;
             max-height: 60px;
-            background-color: rgba(255, 156, 0, 0.9);
-            color: #126180;
             position: initial;
             -webkit-box-orient: horizontal;
             -webkit-box-direction: normal;
@@ -235,13 +264,12 @@ html {
         font-size: 20px;
         text-align: center; }
         .main .section_content-nav li a {
-          font-size: .85em;
-          text-decoration: none;
-          color: rgba(255, 191, 0, 0.788);
-          font-size: .75em; }
+          font-size: .95em;
+          color: #ea441c;
+          text-decoration: none; }
           .main .section_content-nav li a:hover, .main .section_content-nav li a .hover {
-            background: #126180;
-            color: #FFBF00; }
+            background: #9c99998a;
+            color: #FFFFFF; }
           @media screen and (min-width: 768px) {
             .main .section_content-nav li a {
               display: -webkit-box;
@@ -250,8 +278,7 @@ html {
               -webkit-box-align: center;
               -ms-flex-align: center;
               align-items: center;
-              padding: 0 17px;
-              color: #126180; } }
+              padding: 0 17px; } }
         @media screen and (min-width: 768px) {
           .main .section_content-nav li {
             display: -webkit-box;
@@ -274,7 +301,7 @@ html {
       height: 800px;
       overflow-y: scroll;
       margin-top: 10px;
-      background: #00bbca; }
+      background: #007bff; }
       @media only screen and (min-width: 768px) {
         .main .section_content .area_trabajo {
           height: 460px; } }
@@ -310,7 +337,7 @@ html {
   height: 8vh;
   text-align: center;
   padding: 5px 0 0 0;
-  background-color: #00bbca; }
+  background-color: #007bff; }
   .footer-text {
     font-size: .65em; }
 
@@ -323,8 +350,59 @@ html {
         visibility: hidden; } }
 
 .active {
-  color: #FFBF00;
-  background: #126180; }
+  background: #263238; }
+
+.start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(185, 71, 76, 0.705)), to(rgba(8, 9, 83, 0.22))), url(../img/tire.jpg);
+  background-image: -webkit-linear-gradient(right, rgba(185, 71, 76, 0.705), rgba(8, 9, 83, 0.22)), url(../img/tire.jpg);
+  background-image: -o-linear-gradient(right, rgba(185, 71, 76, 0.705), rgba(8, 9, 83, 0.22)), url(../img/tire.jpg);
+  background-image: linear-gradient(to left, rgba(185, 71, 76, 0.705), rgba(8, 9, 83, 0.22)), url(../img/tire.jpg);
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .start-logo {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    position: relative;
+    color: #FFFFFF;
+    padding: 20px;
+    border: 2px solid #FFFFFF;
+    border-bottom: 0; }
+    .start-logo__title {
+      font-size: 3.95em;
+      letter-spacing: 10px; }
+    .start-logo__subtitle {
+      position: relative;
+      top: 29px;
+      color: #FFFFFF;
+      text-align: center; }
+      .start-logo__subtitle::before, .start-logo__subtitle::after {
+        content: '';
+        position: absolute;
+        width: 44px;
+        height: 2px;
+        background-color: currentColor;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%); }
+      .start-logo__subtitle::before {
+        left: 131px; }
+      .start-logo__subtitle::after {
+        right: 131px; }
 
 * {
   padding: 0;
@@ -336,6 +414,35 @@ body,
 html {
   font-family: 'Libre Baskerville', serif;
   overflow-x: hidden; }
+
+.navbar-logo {
+  position: relative;
+  color: #FFFFFF;
+  padding: 20px;
+  border: 2px solid #FFFFFF;
+  border-bottom: 0; }
+  .navbar-logo__title {
+    font-size: 3.95em;
+    letter-spacing: 10px; }
+  .navbar-logo__subtitle {
+    position: relative;
+    top: 29px;
+    color: #FFFFFF;
+    text-align: center; }
+    .navbar-logo__subtitle::before, .navbar-logo__subtitle::after {
+      content: '';
+      position: absolute;
+      width: 44px;
+      height: 2px;
+      background-color: currentColor;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .navbar-logo__subtitle::before {
+      left: 131px; }
+    .navbar-logo__subtitle::after {
+      right: 131px; }
 
 .entry {
   margin-top: 30px;
@@ -416,10 +523,10 @@ html {
   margin: 25px 5px; }
 
 .buttons-save {
-  background-color: #007bff; }
+  background-color: #ea441c; }
 
 .buttons-clean {
-  background-color: #007bff; }
+  background-color: #ea441c; }
 
 .aling__input {
   display: -webkit-box;
