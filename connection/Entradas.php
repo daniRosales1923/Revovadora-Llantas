@@ -1,5 +1,5 @@
 <?php
-    header('Content-Type: text/html; charset=UTF-8');
+    //header('Content-Type: text/html; charset=UTF-8');
     session_start();
     if (isset($_SESSION['nombre'])){
 		global $ClsCn, $Ins, $Consultas, $idUsr;
@@ -13,6 +13,22 @@
 		$ClsCn = new ConexionDatos();
 		$Ins = new Insertadatos();
 		$Consultas = new Consultas();
+		/* Variables session CR*/
+				$_SESSION["idllantaCR"] = "";
+				$_SESSION["MarcaCR"] ="";
+				$_SESSION["ModeloCR"] ="";
+				$_SESSION["FolioCR"]="";
+				$_SESSION["fechaCR"] = "";
+				$_SESSION["comentarioCR"]  = "";
+				$_SESSION["statusCR"]  = "";
+			/* variables VT */
+				$_SESSION["idllantaVT"] = "";
+				$_SESSION["MarcaVT"] ="";
+				$_SESSION["ModeloVT"] ="";
+				$_SESSION["FolioVT"]="";
+				$_SESSION["fechaVT"] = "";
+				$_SESSION["statusVT"]  = "";
+				$_SESSION["idclienteVT"]="";
     }else{
  		header('Location: LogIn.php');
      	die() ;
@@ -24,54 +40,17 @@
 <html>
 <head>
 <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
     crossorigin="anonymous">
     <link rel="stylesheet" href = "../assets/css/entry.css">
 <title>Entradas</title>
 </head>
 <body>
- <section class="main">
-	<div class="section_logo">
-		<div id="logo">
-			<img src="../assets/img/logo2.png" width="195" height="195">
-		</div>
-			<h2 class="item_title-2">Renovadora de llantas</h2>
-	</div>
-
-  <div class="section_content">
-		<header class="section_content-nav">
-			<div class="title">
-					<h2 class="item_title">Renovadora de llantas</h2>
-			</div>
-			<input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
-			<nav class="navigation">
-					<ul>
-							<li ><a href="Entradas.php" active >ENTRADAS</a></li>
-							<li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
-							<li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
-							<li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
-							<li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
-							<li><a href="login.php">SALIR <i class="fas fa-stop"></i></a></li>
-					</ul>
-			</nav>
-		</header>
-    <div class="area_trabajo">
-			<!-- <a> ENTRADAS </a> -->
-			<form class="entry" id="Entrada" method="POST">
-				<div class="entry-form__header">
-					<div class="aling__input">
-						<label id= "lblFolio" name = "lblFolio" >Folio</label>
-						<input class="form" id="txtFolio" name="txtFolio" type="text"  value = "<?php echo $_SESSION["Folio"]?>" readonly >
-					</div>
-					<div class="aling__input">
-						<label id= "lblFolio" name = "lblFolio" >Fecha</label>
-						<input class="form" id="txtFecha" name="txtFecha" type="text"  value = "<?php echo $_SESSION["fecha"]?>" readonly >
-					</div>
-					<div class="aling__input">
-						<label id= "lblStatus" name = "lblStatus" >Status</label>
-						<input class="form" id="txtStatus"  name="txtStatus" type="text"  value = "<?php echo $_SESSION["status"]?>" readonly >
-					</div>
+       <section class="main">
+            <div class="section_logo">
+                <div id="logo">
+                    <img src="../assets/img/logo2.png" width="195" height="195">
 				</div>
 				<div class="entry-form__body">
 					<div class="aling__input">
@@ -97,36 +76,63 @@
 			</form>
 		<div>
 
-		<?PHP 
-			if (isset($_REQUEST['ddlMarca'])){
-					$_SESSION["Marca"] = $_REQUEST['ddlMarca'];
-					if ( isset($_REQUEST['ddlModelo'])){
-						$_SESSION["Modelo"] = $_REQUEST['ddlModelo'];
-						if (isset($_REQUEST['GuardaLllanta'])){
-							if (!GuardaLlanta())
-								echo "<h1> ERROR</h1> ";
-							else
-								formularioLlantas($_SESSION["Folio"]);	
-						}
-						else
-							formularioLlantas($_SESSION["Folio"]);
-					}
-					else
-						formularioLlantas($_SESSION["Folio"]);
-				}
-				else
-					formularioLlantas($_SESSION["Folio"]);
-			LLenaGWLanntas($_SESSION["Folio"]);	
-		?>
+            <div class="section_content">
+                <header class="section_content-nav">
+                    <div class="title">
+                        <h2 class="item_title">Renovadora de llantas</h2>
+                    </div>
+                    <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
+                    <nav class="navigation">
+                        <ul>
+                            <li><a href="Entradas.php">ENTRADAS</a></li>
+                            <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
+                            <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
+                            <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
+                            <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+                            <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
+                        </ul>
+                    </nav>
+                </header>
+                <div class="area_trabajo">
+                 
+        <div>
+        <?PHP
+            if (isset($_REQUEST['Limpiar']))
+                Limpiar();
+            else
+                if (isset($_REQUEST['Guardar']))
+                    Guardar();
+                else
+                    Restaura($_SESSION["Folio"]);
+                    
+            if (isset($_REQUEST['ddlMarca'])){
+                    $_SESSION["Marca"] = $_REQUEST['ddlMarca'];
+                    if ( isset($_REQUEST['ddlModelo'])){
+                        $_SESSION["Modelo"] = $_REQUEST['ddlModelo'];
+                        if (!isset($_REQUEST['Limpiar'])){
+                            if (isset($_REQUEST['GuardaLllanta'])){
+                                if (!GuardaLlanta())
+                                    echo "<h1> ERROR</h1> ";
+                                else
+                                    formularioLlantas($_SESSION["Folio"]);	
+                            }
+                            else
+                                formularioLlantas($_SESSION["Folio"]);
+                        }
+                    }
+                    else
+                        formularioLlantas($_SESSION["Folio"]);
+                }
+                else
+                    formularioLlantas($_SESSION["Folio"]);
+            LLenaGWLanntas($_SESSION["Folio"]);	
+        ?>
+        </div>
 </div>
- </div>
-
-            </div>
             
         </section>
 		<footer class="footer">
 				<p class="footer-text">
-               
                 <i class="fas fa-copyright"></i> Todos los derechos reservados - Instituto Tecnologico de Orizaba. <br>
 					Diseñado por alumnos del plantel.
 				</p>
@@ -135,11 +141,7 @@
 </html>
 
 <?php 
-	if (isset($_REQUEST['Guardar']))
-		Guardar();
-	if (isset($_REQUEST['Limpiar']))
-		Limpiar();
-	
+
 	function Guardar(){
 		global $ClsCn, $Ins, $idUsr;
 		$cliente = $_REQUEST['ddlCliente'];
@@ -161,22 +163,73 @@
 	}
 	
 	function Restaura($prmFolioEnt){
-		global $ClsCn,$Consultas;
-		$Consulta = $Consultas->DatosEntrada($prmFolioEnt,'','AC','');
-		$ClsCn->Conecta();
-		$rst = $ClsCn->EjecutaConsulta($Consulta);
-		$rows =pg_numrows($rst);
-		$arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
-		$folio = $arr["folioentrada"];
-		if ($folio != ""){
-		  $_SESSION["Folio"] = $arr['folioentrada'];
-			$_SESSION["fecha"] = $arr['fecha'];
-			$_SESSION["idcliente"] = $arr['idcliente'];
-			$_SESSION["status"]  = $arr['status'];
-			$_SESSION["comentario"]  = $arr['comentario'];
-			$ClsCn->Desconecta();
-			header("location:Entradas.php");
+		global $ClsCn,$Consultas,$Usr, $Usrname;
+		$btnGuarda='<input type="submit" name="Guardar" value="Guardar" >';
+		if($prmFolioEnt!=""){
+			$Consulta = $Consultas->DatosEntrada($prmFolioEnt,'','AC','');
+			$ClsCn->Conecta();
+			$rst = $ClsCn->EjecutaConsulta($Consulta);
+			$rows =pg_numrows($rst);
+			$arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
+			$folio = $arr["folioentrada"];
+			if ($folio != ""){
+			  $_SESSION["Folio"] = $arr['folioentrada'];
+				$_SESSION["fecha"] = $arr['fecha'];
+				$_SESSION["idcliente"] = $arr['idcliente'];
+				$_SESSION["status"]  = $arr['status'];
+				$_SESSION["comentario"]  = $arr['comentario'];
+				$ClsCn->Desconecta();
+				//header("location:Entradas.php");
+			}
 		}
+		echo '
+                <center><a> ENTRADAS </a></center>
+				<form id="Entrada" method="POST">
+				<table>
+				  <tr>
+					<td><label id= "lblFolio" name = "lblFolio" >Folio</label></td>
+					<td><label id= "lblFolio" name = "lblFolio" >Fecha</label></td>
+					<td><label id= "lblStatus" name = "lblStatus" >Status</label></td>
+					<td><label id= "lblUsuario" name= "lblUsuario"> Usuario </label> </td>
+				  </tr>
+				  <tr>
+					<td> 
+						<input id="txtFolio" name="txtFolio" type="text"  value = "'.$_SESSION["FolioCR"].'" readonly >
+					</td>
+					<td>
+						<input id="txtFecha" name="txtFecha" type="text"  value = "'. $_SESSION["fechaCR"].'" readonly >
+					</td>
+					<td>
+						<input id="txtStatus"  name="txtStatus" type="text"  value = "'.$_SESSION["statusCR"].'" readonly > 
+					</td>
+					<td>
+						<input id="txtUsuario"name="txtUsuario" type="text" value = "('. $Usr. ') '. $Usrname.'" readonly >
+					</td>
+				  </tr>
+				  <tr>
+					<td><label name = "lblStatus" >Cliente</label></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td colspan="3">'. LlenaComboCliente($_SESSION["idcliente"]).' </td>
+					<td>&nbsp;</td>
+				  </tr>
+				   <tr>
+					<td><label name = "lblComentario" >Comentario</label></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				  </tr>
+				   <tr>
+					<td colspan="3"><input name="txtComentario"  value="'.$_SESSION["comentario"].'" > </td>
+					<td> </td>
+				  </tr>
+				</table>
+				'.$btnGuarda.'
+				<input type="submit" name="Limpiar" value="Limpiar" >
+				</form>';
 	}
 	function GuardaLlanta(){
 		global $ClsCn, $Ins, $idUsr;
@@ -338,7 +391,7 @@
 		global $ClsCn, $Consultas;
 	
 		if($prmFolio!=""){
-			$Consulta = $Consultas->DatosLlantas('',$prmFolio,'');
+			$Consulta = $Consultas->DatosLlantas('',$prmFolio,'','');
 			$ClsCn->conecta();
 			$result = $ClsCn->EjecutaConsulta($Consulta);
 			$rows =pg_numrows($result);
