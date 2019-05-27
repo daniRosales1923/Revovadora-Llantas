@@ -239,10 +239,7 @@ html {
           text-decoration: none;
           color: rgba(255, 191, 0, 0.788);
           font-size: .75em; }
-          .main .section_content-nav li a:hover {
-            background: #126180;
-            color: #FFBF00; }
-          .main .section_content-nav li a:active {
+          .main .section_content-nav li a:hover, .main .section_content-nav li a .hover {
             background: #126180;
             color: #FFBF00; }
           @media screen and (min-width: 768px) {
@@ -265,6 +262,13 @@ html {
             -ms-flex-direction: row;
             flex-direction: row; } }
     .main .section_content .area_trabajo {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
       width: 100%;
       height: 500px;
       height: 800px;
@@ -317,6 +321,10 @@ html {
     @media screen and (min-width: 768px) {
       .item_title-2 {
         visibility: hidden; } }
+
+.active {
+  color: #FFBF00;
+  background: #126180; }
 
 * {
   padding: 0;
@@ -388,6 +396,15 @@ html {
     height: 30px;
     border-radius: 8px;
     text-align: center; }
+
+.form-llantas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
 
 .buttons-save, .buttons-clean {
   width: 82px;

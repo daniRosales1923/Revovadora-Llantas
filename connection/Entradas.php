@@ -47,101 +47,76 @@
 <title>Entradas</title>
 </head>
 <body>
-       <section class="main">
-            <div class="section_logo">
-                <div id="logo">
-                    <img src="../assets/img/logo2.png" width="195" height="195">
-				</div>
-				<div class="entry-form__body">
-					<div class="aling__input">
-						<label id= "lblUsuario" name= "lblUsuario"> Usuario </label>
-						<input class="form" id="txtUsuario"name="txtUsuario" type="text" value = "<?php echo "(". $Usr. ") ". $Usrname?>" readonly >
-					</div>
-					<div class="aling__input">
-						<label name = "lblStatus" >Cliente</label>
-						<?php echo LlenaComboCliente($_SESSION["idcliente"]);?> 
-					</div>
-				</div>
-				<div class="entry-form__footer">
-					
-					<div class="aling__input" style="margin: 5px;">
-						<label name = "lblComentario" >Comentario</label>
-						<textarea class="form-comment" name="txtComentario" maxlength="50" value="<?php echo  $_SESSION["comentario"] ?>"  rows="5" cols="30" placeholder="Escribe aquí tus comentarios"></textarea>
-					</div>
-				</div>
-				<div class="buttons">
-					<input class="buttons-save" type="submit" name="Guardar" value="Guardar" >
-					<input class="buttons-clean" type="submit" name="Limpiar" value="Limpiar" >
-				</div>
-			</form>
-		<div>
+	<section class="main">
+		<div class="section_logo">
+			<div id="logo">
+				<img src="../assets/img/logo2.png" width="195" height="195">
+			</div>
+		</div>
 
-            <div class="section_content">
-                <header class="section_content-nav">
-                    <div class="title">
-                        <h2 class="item_title">Renovadora de llantas</h2>
-                    </div>
-                    <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
-                    <nav class="navigation">
-                        <ul>
-                            <li><a href="Entradas.php">ENTRADAS</a></li>
-                            <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
-                            <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
-                            <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
-                            <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
-                            <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
-                        </ul>
-                    </nav>
-                </header>
-                <div class="area_trabajo">
-                 
-        <div>
-        <?PHP
-            if (isset($_REQUEST['Limpiar']))
-                Limpiar();
-            else
-                if (isset($_REQUEST['Guardar']))
-                    Guardar();
-                else
-                    Restaura($_SESSION["Folio"]);
-                    
-            if (isset($_REQUEST['ddlMarca'])){
-                    $_SESSION["Marca"] = $_REQUEST['ddlMarca'];
-                    if ( isset($_REQUEST['ddlModelo'])){
-                        $_SESSION["Modelo"] = $_REQUEST['ddlModelo'];
-                        if (!isset($_REQUEST['Limpiar'])){
-                            if (isset($_REQUEST['GuardaLllanta'])){
-                                if (!GuardaLlanta())
-                                    echo "<h1> ERROR</h1> ";
-                                else
-                                    formularioLlantas($_SESSION["Folio"]);	
-                            }
-                            else
-                                formularioLlantas($_SESSION["Folio"]);
-                        }
-                    }
-                    else
-                        formularioLlantas($_SESSION["Folio"]);
-                }
-                else
-                    formularioLlantas($_SESSION["Folio"]);
-            LLenaGWLanntas($_SESSION["Folio"]);	
-        ?>
-        </div>
-</div>
-            
-        </section>
-		<footer class="footer">
-				<p class="footer-text">
-                <i class="fas fa-copyright"></i> Todos los derechos reservados - Instituto Tecnologico de Orizaba. <br>
-					Diseñado por alumnos del plantel.
-				</p>
-		</footer>
+		<div class="section_content">
+			<header class="section_content-nav">
+				<div class="title">
+					<h2 class="item_title">Renovadora de llantas</h2>
+				</div>
+				<input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
+				<nav class="navigation">
+					<ul>
+						<li class="active"><a style="color: #FFBF00;" href="Entradas.php">ENTRADAS</a></li>
+						<li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
+						<li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
+						<li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
+						<li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+						<li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
+					</ul>
+				</nav>
+			</header>
+			<div class="area_trabajo">
+				<?PHP
+					if (isset($_REQUEST['Limpiar']))
+						Limpiar();
+					else
+						if (isset($_REQUEST['Guardar']))
+							Guardar();
+						else
+							Restaura($_SESSION["Folio"]);
+							
+					if (isset($_REQUEST['ddlMarca'])){
+							$_SESSION["Marca"] = $_REQUEST['ddlMarca'];
+							if ( isset($_REQUEST['ddlModelo'])){
+								$_SESSION["Modelo"] = $_REQUEST['ddlModelo'];
+								if (!isset($_REQUEST['Limpiar'])){
+									if (isset($_REQUEST['GuardaLllanta'])){
+										if (!GuardaLlanta())
+											echo "<h1> ERROR</h1> ";
+										else
+											formularioLlantas($_SESSION["Folio"]);	
+									}
+									else
+										formularioLlantas($_SESSION["Folio"]);
+								}
+							}
+							else
+								formularioLlantas($_SESSION["Folio"]);
+						}
+						else
+							formularioLlantas($_SESSION["Folio"]);
+					LLenaGWLanntas($_SESSION["Folio"]);	
+				?>
+				</div>
+		</div>      
+    </section>
+
+	<footer class="footer">
+		<p class="footer-text">
+			<i class="fas fa-copyright"></i> Todos los derechos reservados - Instituto Tecnologico de Orizaba. <br>
+			Diseñado por alumnos del plantel.
+		</p>
+	</footer>
 </body>
 </html>
 
 <?php 
-
 	function Guardar(){
 		global $ClsCn, $Ins, $idUsr;
 		$cliente = $_REQUEST['ddlCliente'];
@@ -164,7 +139,7 @@
 	
 	function Restaura($prmFolioEnt){
 		global $ClsCn,$Consultas,$Usr, $Usrname;
-		$btnGuarda='<input type="submit" name="Guardar" value="Guardar" >';
+		$btnGuarda='<input class="buttons-save" type="submit" name="Guardar" value="Guardar" >';
 		if($prmFolioEnt!=""){
 			$Consulta = $Consultas->DatosEntrada($prmFolioEnt,'','AC','');
 			$ClsCn->Conecta();
@@ -182,53 +157,43 @@
 				//header("location:Entradas.php");
 			}
 		}
-		echo '
-                <center><a> ENTRADAS </a></center>
-				<form id="Entrada" method="POST">
-				<table>
-				  <tr>
-					<td><label id= "lblFolio" name = "lblFolio" >Folio</label></td>
-					<td><label id= "lblFolio" name = "lblFolio" >Fecha</label></td>
-					<td><label id= "lblStatus" name = "lblStatus" >Status</label></td>
-					<td><label id= "lblUsuario" name= "lblUsuario"> Usuario </label> </td>
-				  </tr>
-				  <tr>
-					<td> 
-						<input id="txtFolio" name="txtFolio" type="text"  value = "'.$_SESSION["FolioCR"].'" readonly >
-					</td>
-					<td>
-						<input id="txtFecha" name="txtFecha" type="text"  value = "'. $_SESSION["fechaCR"].'" readonly >
-					</td>
-					<td>
-						<input id="txtStatus"  name="txtStatus" type="text"  value = "'.$_SESSION["statusCR"].'" readonly > 
-					</td>
-					<td>
-						<input id="txtUsuario"name="txtUsuario" type="text" value = "('. $Usr. ') '. $Usrname.'" readonly >
-					</td>
-				  </tr>
-				  <tr>
-					<td><label name = "lblStatus" >Cliente</label></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				  </tr>
-				  <tr>
-					<td colspan="3">'. LlenaComboCliente($_SESSION["idcliente"]).' </td>
-					<td>&nbsp;</td>
-				  </tr>
-				   <tr>
-					<td><label name = "lblComentario" >Comentario</label></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				  </tr>
-				   <tr>
-					<td colspan="3"><input name="txtComentario"  value="'.$_SESSION["comentario"].'" > </td>
-					<td> </td>
-				  </tr>
-				</table>
-				'.$btnGuarda.'
-				<input type="submit" name="Limpiar" value="Limpiar" >
+		echo '<center><a> ENTRADAS </a></center>
+				<form class="entry" id="Entrada" method="POST"> 
+				<div class="entry-form__header"> 
+					<div class="aling__input"> 
+						<label id= "lblFolio" name = "lblFolio" >Folio</label> 
+						<input class="form" id="txtFolio" name="txtFolio" type="text"  value = "'.$_SESSION["Folio"].'" readonly > 
+					</div> 
+					<div class="aling__input"> 
+						<label id= "lblFolio" name = "lblFolio" >Fecha</label> 
+						<input class="form" id="txtFecha" name="txtFecha" type="text"  value = "'.$_SESSION["fecha"].'" readonly > 
+					</div> 
+					<div class="aling__input"> 
+						<label id= "lblStatus" name = "lblStatus" >Status</label> 
+						<input class="form" id="txtStatus"  name="txtStatus" type="text"  value = "'.$_SESSION["status"].'" readonly > 
+					</div> 
+				</div> 
+				<div class="entry-form__body"> 
+					<div class="aling__input"> 
+						<label id= "lblUsuario" name= "lblUsuario"> Usuario </label> 
+						<input class="form" id="txtUsuario"name="txtUsuario" type="text" value = "('. $Usr. ')'. $Usrname.'" readonly > 
+					</div> 
+					<div class="aling__input"> 
+						<label name = "lblStatus" >Cliente</label> 
+						'.LlenaComboCliente($_SESSION["idcliente"]).'  
+					</div> 
+				</div> 
+				<div class="entry-form__footer"> 
+					 
+					<div class="aling__input" style="margin: 5px;"> 
+						<label name = "lblComentario" >Comentario</label> 
+						<textarea class="form-comment" name="txtComentario" maxlength="50" value="'.$_SESSION["comentario"].'"  rows="5" cols="30" placeholder="Escribe aquí tus comentarios"></textarea> 
+					</div> 
+				</div> 	
+				<div class="buttons">
+					'.$btnGuarda.'
+					<input class="buttons-clean" type="submit" name="Limpiar" value="Limpiar" >
+				</div>
 				</form>';
 	}
 	function GuardaLlanta(){
