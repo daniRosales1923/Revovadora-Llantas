@@ -95,7 +95,7 @@
 							if(isset($_REQUEST['LimpiarLlanta'])){
 								$_SESSION["idllantaCR"]="";
 							}
-							 formularioLlantas($_SESSION["idllantaCR"]);
+							  formularioLlantas($_SESSION["idllantaCR"]);
                         }
                         else
                             formularioLlantas($_SESSION["idllantaCR"]);

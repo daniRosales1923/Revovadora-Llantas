@@ -292,7 +292,7 @@
 						"<td>".$arr["desctrabajo"]."</td>\n".
 						"<td>$".$arr["monto"]."</td>\n".
 						"</tr>\n";
-				$total+=$arr["monto"];
+				 $total+=$arr["monto"];
 			}
 			$tabla .="<tr>\n".
 						"<td></td>\n".

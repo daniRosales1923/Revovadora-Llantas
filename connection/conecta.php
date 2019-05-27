@@ -1,4 +1,4 @@
-<?php
+ <?php
 	// Conectando, seleccionando la base de datos
 	class ConexionDatos{
 		static  private $Host ="";

@@ -1,4 +1,4 @@
-<?php
+ <?php
 	include_once("conecta.php");
 	class Insertadatos {
 		static $ClsCn;
