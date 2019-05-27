@@ -1,5 +1,5 @@
 <?php
-    header('Content-Type: text/html; charset=UTF-8');
+    //header('Content-Type: text/html; charset=UTF-8');
     session_start();
     if (isset($_SESSION['nombre'])){
 		global $ClsCn, $Ins, $Consultas, $idUsr;
@@ -13,6 +13,23 @@
 		$ClsCn = new ConexionDatos();
 		$Ins = new Insertadatos();
 		$Consultas = new Consultas();
+		 /* Variables session Entrada */
+				$_SESSION["Folio"]="";
+				$_SESSION["fecha"] = "";
+				$_SESSION["comentario"]  = "";
+				$_SESSION["idcliente"] = "";
+				$_SESSION["status"]  = "";
+				$_SESSION["idllanta"] = "";
+				$_SESSION["Marca"] ="";
+				$_SESSION["Modelo"] ="";
+				/* variables VT */
+				$_SESSION["idllantaVT"] = "";
+				$_SESSION["MarcaVT"] ="";
+				$_SESSION["ModeloVT"] ="";
+				$_SESSION["FolioVT"]="";
+				$_SESSION["fechaVT"] = "";
+				$_SESSION["statusVT"]  = "";
+				$_SESSION["idclienteVT"]="";
     }else{
  		header('Location: LogIn.php');
      	die() ;
@@ -30,7 +47,6 @@
 <title>Concentrado Renovado</title>
 </head>
 <body>
-
         <section class="main">
             <div class="section_logo">
                 <div id="logo">
@@ -48,8 +64,8 @@
                     <nav class="navigation">
                         <ul>
                             <li><a href="Entradas.php">ENTRADAS</a></li>
-                            <li><a href="ConcentradoRenovado.php">CONCENTRADO RENOVADO</a></li>
-                            <li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
+                            <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
+                            <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
                             <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
                             <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
                             <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
@@ -57,60 +73,36 @@
                     </nav>
                 </header>
                 <div class="area_trabajo">
-                    <form> 
-                    <table>
-                      <tr>
-                        <td><label id= "lblFolio" name = "lblFolio" >Folio</label></td>
-                        <td><label id= "lblFolio" name = "lblFolio" >Fecha</label></td>
-                        <td><label id= "lblStatus" name = "lblStatus" >Status</label></td>
-                        <td><label id= "lblUsuario" name= "lblUsuario"> Usuario </label> </td>
-                      </tr>
-                      <tr>
-                        <td><input id="txtFolio" name="txtFolio" type="text"  value = "<?php echo $_SESSION["FolioCR"]?>" readonly ></td>
-                        <td><input id="txtFecha" name="txtFecha" type="text"  value = "<?php echo $_SESSION["fechaCR"]?>" readonly ></td>
-                        <td><input id="txtStatus"  name="txtStatus" type="text"  value = "<?php echo $_SESSION["statusCR"]?>" readonly ></td>
-                        <td><input id="txtUsuario"name="txtUsuario" type="text" value = "<?php echo "(". $Usr. ") ". $Usrname?>" readonly ></td>
-                      </tr>
-                       <tr>
-                        <td><label name = "lblComentario" >Comentario</label></td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                      </tr>
-                       <tr>
-                        <td colspan="3"><input name="txtComentario"  value="<?php echo  $_SESSION["comentarioCR"] ?>" > </td>
-                        <td> </td>
-                      </tr>
-                    </table>
-                    <input type="submit" name="Guardar" value="Guardar" >
-                    <input type="submit" name="Limpiar" value="Limpiar" >
-                    </form>
-                    <div>
-                    
+                <div>
                     <?PHP 
+					if (isset($_REQUEST['Limpiar']))
+						Limpiar();
+					else
+						if (isset($_REQUEST['Guardar']))
+							Guardar();
+						else
+							Restaura($_SESSION["FolioCR"]);
+	
                         if ( isset($_REQUEST['txtidLLanta'])){
-                            $_SESSION["idllanta"] = $_REQUEST['txtidLLanta'];
-                            if (isset($_REQUEST['GuardaLllanta'])){
-                                if (!GuardaDetalle()){
-                                    echo "<h1> ERROR</h1> ";
-									formularioLlantas($_SESSION["idllanta"]);
+                            $_SESSION["idllantaCR"] = $_REQUEST['txtidLLanta'];
+                            if (!isset($_REQUEST['Limpiar'])){
+								if (isset($_REQUEST['GuardaLllanta'])){
+									if (!GuardaDetalle()){
+										echo "<h1> ERROR</h1> ";
+									}
 								}
-                                else
-                                    formularioLlantas($_SESSION["idllanta"]);	
-                            }
-							if(isset($_REQUEST['LimpiarLlanta'])){
-								$_SESSION["idllanta"]="";
 							}
-							 formularioLlantas($_SESSION["idllanta"]);
+							if(isset($_REQUEST['LimpiarLlanta'])){
+								$_SESSION["idllantaCR"]="";
+							}
+							 formularioLlantas($_SESSION["idllantaCR"]);
                         }
                         else
-                            formularioLlantas($_SESSION["idllanta"]);
+                            formularioLlantas($_SESSION["idllantaCR"]);
                         llenaGWDetalle($_SESSION["FolioCR"]);	
                     ?>
-                     </div>
-
             </div>
-            
+            </div>
         </section>
 		<footer class="footer">
 				<p class="footer-text">
@@ -122,11 +114,7 @@
 </html>
 
 <?php 
-	if (isset($_REQUEST['Guardar']))
-		Guardar();
-	if (isset($_REQUEST['Limpiar']))
-		Limpiar();
-	
+		
 	function Guardar(){
 		global $ClsCn, $Ins, $idUsr;
 		$comentario = $_REQUEST['txtComentario'];
@@ -140,28 +128,61 @@
 				 $Folio = $arr["folio"];
 			}
 			$ClsCn->Desconecta();
-			Restaura($Folio);
+				Restaura($Folio);
 			}
 		else
 			echo "<h1>Error</h1>";
 	}
 	
 	function Restaura($prmFolio){
-		global $ClsCn,$Consultas;
-		$Consulta = $Consultas->DatosConcentrado($prmFolio,'','AC');
-		$ClsCn->Conecta();
-		$rst = $ClsCn->EjecutaConsulta($Consulta);
-		$rows =pg_numrows($rst);
-		$arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
-		$folio = $arr["idconcentrado"];
-		if ($folio != ""){
-		  $_SESSION["FolioCR"] =$folio;
-			$_SESSION["fechaCR"] = $arr['fecha'];
-			$_SESSION["statusCR"]  = $arr['status'];
-			$_SESSION["comentarioCR"]  = $arr['comentario'];
-			$ClsCn->Desconecta();
-			header("location:ConcentradoRenovado.php");
+		global $ClsCn, $Consultas, $Usr, $Usrname;
+		$btnGuarda = '<input type="submit" name="Guardar" value="Guardar" >';
+		if($prmFolio!=""){
+			$btnGuarda="";
+			$Consulta = $Consultas->DatosConcentrado($prmFolio,'','AC');
+			$ClsCn->Conecta();
+			$rst = $ClsCn->EjecutaConsulta($Consulta);
+			$rows =pg_numrows($rst);
+			$arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
+			$folio = $arr["idconcentrado"];
+			if ($folio != ""){
+			  $_SESSION["FolioCR"] =$folio;
+				$_SESSION["fechaCR"] = $arr['fecha'];
+				$_SESSION["statusCR"]  = $arr['status'];
+				$_SESSION["comentarioCR"]  = $arr['comentario'];
+				$ClsCn->Desconecta();
+			}
 		}
+			//header("location:concentradorenovado.php");
+			echo' <form> 
+                    <table>
+                      <tr>
+                        <td><label id= "lblFolio" name = "lblFolio" >Folio</label></td>
+                        <td><label id= "lblFolio" name = "lblFolio" >Fecha</label></td>
+                        <td><label id= "lblStatus" name = "lblStatus" >Status</label></td>
+                        <td><label id= "lblUsuario" name= "lblUsuario"> Usuario </label> </td>
+                      </tr>
+                      <tr>
+                        <td><input id="txtFolio" name="txtFolio" type="text"  value = "'.$_SESSION["FolioCR"].'" readonly ></td>
+                        <td><input id="txtFecha" name="txtFecha" type="text"  value = "'. $_SESSION["fechaCR"].'" readonly ></td>
+                        <td><input id="txtStatus"  name="txtStatus" type="text"  value = "'.$_SESSION["statusCR"].'" readonly ></td>
+                        <td><input id="txtUsuario"name="txtUsuario" type="text" value = "('. $Usr. ') '. $Usrname.'" readonly ></td>
+                      </tr>
+                       <tr>
+                        <td><label name = "lblComentario" >Comentario</label></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                       <tr>
+                        <td colspan="3"><input name="txtComentario"  value="'. $_SESSION["comentarioCR"] .'" > </td>
+                        <td> </td>
+                      </tr>
+                    </table>
+                    '.$btnGuarda.'
+                    <input type="submit" name="Limpiar" value="Limpiar" >
+                    </form>';
+		
 	}
 	function GuardaDetalle(){
 		global $ClsCn, $Ins, $idUsr;
@@ -170,7 +191,7 @@
 		$observacion =  $_REQUEST['txtObservacion'];
 		$trabajo = $_REQUEST['ddlTrabajo'];
 		$Folio = "";
-		if ($Ins->AltaDetalleContrado($_SESSION["Folio"], $idllanta, $trabajo,$observacion)>0){
+		if ($Ins->AltaDetalleContrado($_SESSION["FolioCR"], $idllanta, $trabajo,$observacion)>0){
 			$ClsCn->Desconecta();
 			return true;
 			}
@@ -187,54 +208,66 @@
 		$_SESSION["MarcaCR"] ="";
 		$_SESSION["ModeloCR"] ="";
 		$_SESSION["idllantaCR"]="";
-		header("location:ConcentradoRenovado.php");
+		header("location:concentradorenovado.php");
 	}
 
 
 	function formularioLlantas($prmidllanta){
 		global $ClsCn, $Consultas;
-		if($_SESSION["Folio"]!=""){
+		if($_SESSION["FolioCR"]!=""){
 			$marca = $modelo = $matricula = $trabajo = $idmodelo = "";
 			if($prmidllanta !=""){
 				
-				$Consulta =  $Consultas->DatosLlantas($prmidllanta,'','');
+				$Consulta =  $Consultas->DatosLlantas($prmidllanta,'','','');
 				$ClsCn->Conecta();
 				$rst = $ClsCn->EjecutaConsulta($Consulta);
 				$rows =pg_numrows($rst);
-				$arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
-				$idllanta = $arr["idllanta"];
-				if ($idllanta!=""){
-					$matricula = $arr["descripcion"] ;
-					$marca = $arr["marca"];
-					$modelo = $arr["modelo"];
-					$idmodelo = $arr["idmodelo"];
-					$trabajo = $arr["idtrabajo"];		
+				if ($rows>0){
+					$arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
+					$idllanta = $arr["idllanta"];
+					if ($idllanta!=""){
+						$matricula = $arr["descripcion"] ;
+						$marca = $arr["marca"];
+						$modelo = $arr["modelo"];
+						$idmodelo = $arr["idmodelo"];
+						$trabajo = $arr["idtrabajo"];		
+					}
 				}
+				else
+					$_SESSION["idllantaCR"] = "";
 			}
 				echo '<center> En caso que se le haya hecho otro trabajo aqui es donde se agrega...</center>
-				<form id="LLantas"> 
-					<table>
-						  <tr>
-							<td><label id= "lblIDllanta" >ID llanta</label></td>
-							<td><label id= "lblMatricula" >Numero de serie</label></td>
-							<td><label id= "lblMarca"  >Marca</label></td>
-							<td><label id= "lblModelo"  >Modelo</label></td>
-							<td><label id= "Trabajo"> Trabajo </label> </td>
-							<td><label id= "Trabajo"> Observacion </label> </td>
-							<td> </td>
-						  </tr>
-						  <tr>
-						    <td> <input type="text" name="txtidLLanta" onchange="this.form.submit()" value = "'.$_SESSION["idllanta"].'"></td>
-							<td> <input type="text" name = "txtNumSerie" value="'.$matricula.'" readonly></td>
-							<td><input type="text" name="txtMarca" value="'.$marca.'" readonly></td>
-							<td><input type="text" name="txtModelo" value="'. $modelo.'" readonly></td>
-							<td>'. ComboTrabajo($idmodelo,$trabajo).'</td>
-							<td><input type="text" name="txtObservacion"></td>
-							<td> <input type="submit" name="GuardaLllanta" value="Agregar" ></td>
-							<td> <input type="submit" name="LimpiarLlanta" value="Limpiar" ></td>
-						  </tr>
-					</table>
-				</form>';
+					<form id="LLantas"> 
+						<table>
+							  <tr>
+								<td><label id= "lblIDllanta" >ID llanta</label></td>
+								<td><label id= "lblMatricula" >Numero de serie</label></td>
+								<td><label id= "lblMarca"  >Marca</label></td>
+								<td><label id= "lblModelo"  >Modelo</label></td>
+								<td><label id= "Trabajo"> Trabajo </label> </td>
+								<td><label id= "Trabajo"> Observacion </label> </td>
+								<td> </td>
+							  </tr>
+							  <tr>
+								<td> 
+									<input type="text" name="txtidLLanta" onchange="this.form.submit()" value = "'.$_SESSION["idllantaCR"].'">
+								</td>
+								<td> 
+									<input type="text" name = "txtNumSerie" value="'.$matricula.'" readonly>
+								</td>
+								<td>
+									<input type="text" name="txtMarca" value="'.$marca.'" readonly>
+								</td>
+								<td>
+									<input type="text" name="txtModelo" value="'. $modelo.'" readonly>
+								</td>
+								<td>'. ComboTrabajo($idmodelo,$trabajo).'</td>
+								<td><input type="text" name="txtObservacion"></td>
+								<td> <input type="submit" name="GuardaLllanta" value="Agregar" ></td>
+								<td> <input type="submit" name="LimpiarLlanta" value="Limpiar" ></td>
+							  </tr>
+						</table>
+					</form>';
 		}
 	}
 	

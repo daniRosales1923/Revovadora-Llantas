@@ -67,7 +67,7 @@
 
        <div id = "Login">
             <form method="POST" action="VerificaLogin.php">
-                <label id="lblLogin">cafesITO</label>
+                <label id="lblLogin">LOGIN</label>
                 <br><br><br>
                 <label>Usuario</label><br>
                 <input type=“text” placeholder=ejemplo123 name=“txtusr” />

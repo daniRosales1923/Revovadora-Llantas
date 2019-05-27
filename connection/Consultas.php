@@ -20,14 +20,16 @@
 			return $query;
 		}	
 		
-		function DatosLlantas($prmIdllanta, $prmFolioEntradam, $prmCliente){
+		function DatosLlantas($prmIdllanta, $prmFolioEntrada, $prmCliente,$prmStatus){
 		 	$Condicion = "";
 		 	if($prmIdllanta <>"")
-		 	$Condicion .= "And l.idllante = $prmIdllanta ";
-		 	if($prmFolio<> "")
-				$Condicion .= "And e.folioentrada = $prmFolio ";
+		 	$Condicion .= "And l.idllanta = $prmIdllanta ";
+		 	if($prmFolioEntrada<> "")
+				$Condicion .= "And l.folioentrada = $prmFolioEntrada ";
 			if ($prmCliente <>"")
 				$Condicion .= "And c.nombre = '$prmCliente' ";
+			if ($prmStatus <>"")
+				$Condicion .= "And l.status = '$prmStatus' ";
 			$query = "select l.idllanta, l.folioentrada, l.descripcion, l.idmarca, m.marca, l.idmodelo, mo.modelo, l.idcliente, c.nombre, l.idtrabajo, t.desctrabajo, l.status from datosllantas as l, marcas as m, modelo as mo, trabajo as t, cliente as c where l.idmarca =m.idmarca and l.idmodelo= mo.idmodelo and l.idcliente = c.idcliente and l.idtrabajo = t.idtrabajo $Condicion ";
 			return $query;
 		}
@@ -53,8 +55,51 @@
 			$query = "select c.idcliente, c.nombre, c.apellidopaterno, c.apellidomaterno, c.rfc, c.correo, c.telefono, c.calle, c.numext, c.numint, c.colonia, c.cp, c.localidad, c.status FROM cliente c where c.idcliente = c.idcliente $Condicion ";
 			return $query;
 		}
-
-
+		
+		function DatosConcentrado($prmFolio,$prmUsuario,$prmStatus){
+			$Condicion = " ";
+			if($prmFolio<> "")
+				$Condicion = "And c.idconcentrado = $prmFolio ";
+			if ($prmUsuario<>"")
+				$Condicion .= "And u.usuario = '$prmUsuario' ";
+			if ($prmStatus <>"")
+				$Condicion .= "And c.status = '$prmStatus' ";
+			$query = "select c.idconcentrado, c.idusuario, u.nombre, c.comentario, c.fecha, c.status from concentradorenovado c, usuario u where c.idusuario = u.idusuario $Condicion";
+			return $query;
+		}	
+		
+		function DatosConcentradodetalle($prmFolio,$prmidllanta,$condicionextra){
+			$Condicion = " ";
+			if($prmFolio<> "")
+				$Condicion = "And cd.idconcentrado = $prmFolio ";
+			if($prmidllanta <>"")
+				$Condicion .="And cd.idllanta = $prmidllanta";
+			$query = "select cd.idconcentrado, cd.iddetalle, cd.idllanta,dl.descripcion, ma.marca, mo.modelo, cd.idtrabajo, t.desctrabajo, cd.comentario from concetradorenovadodetalle cd, datosllantas dl, marcas ma, modelo mo, trabajo t where cd.idllanta = dl.idllanta and dl.idmarca = ma.idmarca and dl.idmodelo = mo.idmodelo and cd.idtrabajo = t.idtrabajo $Condicion $condicionextra order by cd.idconcentrado, cd.iddetalle, cd.idllanta";
+			return $query;
+		}
+		
+		function DatosVenta($prmFolio,$prmUsuario,$prmStatus){
+			$Condicion = " ";
+			if($prmFolio<> "")
+				$Condicion = "And s.idsalida = $prmFolio ";
+			if ($prmUsuario<>"")
+				$Condicion .= "And u.usuario = '$prmUsuario' ";
+			if ($prmStatus <>"")
+				$Condicion .= "And s.status = '$prmStatus' ";
+			$query = "select s.idsalida, s.idusuario, u.nombre as usuario, s.idcliente, c.nombre, s.status, s.fecha from salidas s, cliente c, usuario u where s.idcliente = c.idcliente and s.idusuario = u.idusuario $Condicion"	;
+			return $query;
+		}
+		
+		function DatosVentaDetalle($prmFolio,$prmidllanta,$condicionextra){
+			$Condicion = " ";
+			if($prmFolio<> "")
+				$Condicion = "And s.idsalida = $prmFolio ";
+			if ($prmidllanta<>"")
+				$Condicion .= "And s.idllanta = '$prmidllanta' ";
+			$query = "select s.idsalida, s.iddetsalida, s.idconcentrado, s.iddetconcen, s.idllanta, dl.descripcion, t.desctrabajo, s.monto from salidasdetalle s, datosllantas dl, trabajo t,concetradorenovadodetalle cd, concentradorenovado c  where s.idconcentrado = c.idconcentrado and s.iddetconcen = cd.iddetalle and s.idllanta = cd.idllanta and cd.idllanta = dl.idllanta and  cd.idtrabajo = t.idtrabajo $Condicion"	;
+			return $query;
+		}
+		
 	}
 
 
