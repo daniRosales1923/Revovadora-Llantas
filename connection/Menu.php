@@ -1,12 +1,38 @@
 <?php
-    // header('Content-Type: text/html; charset=UTF-8');
-    // session_start();
-    // if (isset($_SESSION['nombre'])){
-    //     $cliente = $_SESSION['nombre'];
-    // }else{
- 	// 	header('Location: LogIn.php');
-    //  	die() ;
-    // }
+     header('Content-Type: text/html; charset=UTF-8');
+     session_start();
+     if (isset($_SESSION['nombre'])){
+         /* Variables session Entrada */
+				$_SESSION["Folio"]="";
+				$_SESSION["fecha"] = "";
+				$_SESSION["comentario"]  = "";
+				$_SESSION["idcliente"] = "";
+				$_SESSION["status"]  = "";
+				$_SESSION["idllanta"] = "";
+				$_SESSION["Marca"] ="";
+				$_SESSION["Modelo"] ="";
+			/* Variables session CR*/
+				$_SESSION["idllantaCR"] = "";
+				$_SESSION["MarcaCR"] ="";
+				$_SESSION["ModeloCR"] ="";
+				$_SESSION["FolioCR"]="";
+				$_SESSION["fechaCR"] = "";
+				$_SESSION["comentarioCR"]  = "";
+				$_SESSION["statusCR"]  = "";
+			/* variables VT */
+				$_SESSION["idllantaVT"] = "";
+				$_SESSION["MarcaVT"] ="";
+				$_SESSION["ModeloVT"] ="";
+				$_SESSION["FolioVT"]="";
+				$_SESSION["fechaVT"] = "";
+				$_SESSION["statusVT"]  = "";
+				$_SESSION["idclienteVT"]="";
+				$_SESSION["pag"]="";
+     }else{
+ 	 	header('Location: LogIn.php');
+      	die() ;
+     }
+	 
 ?>
 
 <!DOCTYPE html>
@@ -20,62 +46,43 @@
     </head>
 
     <body>
-        <!-- <div id="sesion_cliente">
-            <?php 
-            // if(isset($_SESSION['nombre'])){
-            //     echo "<p> Bienvenido ".$cliente."&nbsp;&nbsp;";
-            //     echo "<a href='LogIn.php?salir=1'>Salir</a></p>";
-            //     if(isset($_REQUEST["salir"])){
-            //         unset($_SESSION["cliente"]);
-            //     }
-            // }
-            ?>
+
+      <section class="main">
+        <div class="section_logo">
+            <div class="navbar-logo" > 
+                <h1 class="navbar-logo__title">Tire</h1>
+                <p class="navbar-logo__subtitle">RENOVATOR</p>
+            </div>
+            <h2 class="item_title-2">Renovadora de llantas</h2>
         </div>
 
-        <div id="menu_cliente">
-            <ul id="menu_horizontal">
-                <li class="nueva" id="nueva"><a class="active" href="menu_cliente.php?nueva=1#nueva">NUEVA OPINIÓN</a></li>
-                <li class="ver" id="ver"><a href="menu_cliente.php?ver=1#ver">VER OPINIONES</a></li>
-                <li class="eliminar" id="eliminar"><a href="menu_cliente.php?eliminar=1#eliminar">ELIMINAR OPINIÓN</a></li>
-                <li class="datos_cliente" id="datos_cliente"><a href="menu_cliente.php?datos_cliente=1#datos_cliente">DATOS PERSONALES</a></li>
-            </ul>
-
-            <div id="cuerpo_body">
-                 Aqui va todo el código del cuerpo... 
-            </div>
-        </div> -->
-
-        <section class="main">
-            <div class="section_logo">
-                <div id="logo">
-                    <img src="../assets/img/logo2.png" width="195" height="195">
-				</div>
-                <h2 class="item_title-2">Renovadora de llantas</h2>
-            </div>
-
-            <div class="section_content">
-                <header class="section_content-nav">
-                    <div class="title">
-                        <h2 class="item_title">Renovadora de llantas</h2>
+        <div class="section_content">
+            <header class="section_content-nav">
+                <input class="burger-check" id="burger-check" type="checkbox">
+                <label for="burger-check" class="burger"></label>
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="Entradas.php">ENTRADAS</a></li>
+                        <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
+                        <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
+                        <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
+                        <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+                        <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="area_trabajo">
+                <header class="start row bottom-xs center-xs">
+                    <div class="start-logo" > 
+                        <h1 class="start-logo__title">Tire</h1>
+                        <p class="start-logo__subtitle">RENOVATOR</p>
                     </div>
-                    <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
-                    <nav class="navigation">
-                        <ul>
-                            <li><a href="">ENTRADAS</a></li>
-                            <li><a href="">CONCENTRADO RENOVADO</a></li>
-                            <li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
-                            <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
-                            <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
-                        </ul>
-                    </nav>
                 </header>
-                <div class="area_trabajo">
-                    Esta es un area de trabajo
-                </div>
-
             </div>
+
+        </div>
             
-        </section>
+    </section>
 		<footer class="footer">
 				<p class="footer-text">
                 <i class="fas fa-copyright"></i> Todos los derechos reservados - Instituto Tecnologico de Orizaba. <br>

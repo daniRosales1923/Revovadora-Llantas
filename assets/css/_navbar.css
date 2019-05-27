@@ -1,0 +1,60 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body,
+html {
+  font-family: 'Libre Baskerville', serif;
+  overflow-x: hidden; }
+
+.navbar {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(185, 71, 76, 0.705)), to(rgba(8, 9, 83, 0.22))), url(../img/tire.jpg);
+  background-image: -webkit-linear-gradient(right, rgba(185, 71, 76, 0.705), rgba(8, 9, 83, 0.22)), url(../img/tire.jpg);
+  background-image: -o-linear-gradient(right, rgba(185, 71, 76, 0.705), rgba(8, 9, 83, 0.22)), url(../img/tire.jpg);
+  background-image: linear-gradient(to left, rgba(185, 71, 76, 0.705), rgba(8, 9, 83, 0.22)), url(../img/tire.jpg);
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .navbar-logo {
+    position: relative;
+    color: #FFFFFF;
+    padding: 20px;
+    border: 2px solid #FFFFFF;
+    border-bottom: 0; }
+    .navbar-logo__title {
+      font-size: 3.95em;
+      letter-spacing: 10px; }
+    .navbar-logo__subtitle {
+      position: relative;
+      top: 29px;
+      color: #FFFFFF; }
+      .navbar-logo__subtitle::before, .navbar-logo__subtitle::after {
+        content: '';
+        position: absolute;
+        width: 44px;
+        height: 2px;
+        background-color: currentColor;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%); }
+      .navbar-logo__subtitle::before {
+        left: 151px; }
+      .navbar-logo__subtitle::after {
+        right: 151px; }
+  .navbar-flecha {
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    cursor: pointer; }
+
+@media only screen and (min-width: 768px) {
+  .navbar {
+    padding: 15% 9.2% 0 9.2% !important;
+    line-height: 1;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); } }
