@@ -27,98 +27,97 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
     crossorigin="anonymous">
-    <link rel="stylesheet" href = "../assets/css/main.css">
+    <link rel="stylesheet" href = "../assets/css/entry.css">
 <title>Entradas</title>
 </head>
 <body>
  <section class="main">
-            <div class="section_logo">
-                <div id="logo">
-                    <img src="../assets/img/logo2.png" width="195" height="195">
+	<div class="section_logo">
+		<div id="logo">
+			<img src="../assets/img/logo2.png" width="195" height="195">
+		</div>
+			<h2 class="item_title-2">Renovadora de llantas</h2>
+	</div>
+
+  <div class="section_content">
+		<header class="section_content-nav">
+			<div class="title">
+					<h2 class="item_title">Renovadora de llantas</h2>
+			</div>
+			<input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
+			<nav class="navigation">
+					<ul>
+							<li ><a href="Entradas.php" active >ENTRADAS</a></li>
+							<li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
+							<li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
+							<li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
+							<li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+							<li><a href="login.php">SALIR <i class="fas fa-stop"></i></a></li>
+					</ul>
+			</nav>
+		</header>
+    <div class="area_trabajo">
+			<!-- <a> ENTRADAS </a> -->
+			<form class="entry" id="Entrada" method="POST">
+				<div class="entry-form__header">
+					<div class="aling__input">
+						<label id= "lblFolio" name = "lblFolio" >Folio</label>
+						<input class="form" id="txtFolio" name="txtFolio" type="text"  value = "<?php echo $_SESSION["Folio"]?>" readonly >
+					</div>
+					<div class="aling__input">
+						<label id= "lblFolio" name = "lblFolio" >Fecha</label>
+						<input class="form" id="txtFecha" name="txtFecha" type="text"  value = "<?php echo $_SESSION["fecha"]?>" readonly >
+					</div>
+					<div class="aling__input">
+						<label id= "lblStatus" name = "lblStatus" >Status</label>
+						<input class="form" id="txtStatus"  name="txtStatus" type="text"  value = "<?php echo $_SESSION["status"]?>" readonly >
+					</div>
 				</div>
-                <h2 class="item_title-2">Renovadora de llantas</h2>
-            </div>
+				<div class="entry-form__body">
+					<div class="aling__input">
+						<label id= "lblUsuario" name= "lblUsuario"> Usuario </label>
+						<input class="form" id="txtUsuario"name="txtUsuario" type="text" value = "<?php echo "(". $Usr. ") ". $Usrname?>" readonly >
+					</div>
+					<div class="aling__input">
+						<label name = "lblStatus" >Cliente</label>
+						<?php echo LlenaComboCliente($_SESSION["idcliente"]);?> 
+					</div>
+				</div>
+				<div class="entry-form__footer">
+					
+					<div class="aling__input" style="margin: 5px;">
+						<label name = "lblComentario" >Comentario</label>
+						<textarea class="form-comment" name="txtComentario" maxlength="50" value="<?php echo  $_SESSION["comentario"] ?>"  rows="5" cols="30" placeholder="Escribe aquí tus comentarios"></textarea>
+					</div>
+				</div>
+				<div class="buttons">
+					<input class="buttons-save" type="submit" name="Guardar" value="Guardar" >
+					<input class="buttons-clean" type="submit" name="Limpiar" value="Limpiar" >
+				</div>
+			</form>
+		<div>
 
-            <div class="section_content">
-                <header class="section_content-nav">
-                    <div class="title">
-                        <h2 class="item_title">Renovadora de llantas</h2>
-                    </div>
-                    <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
-                    <nav class="navigation">
-                        <ul>
-                            <li><a href="Entradas.php">ENTRADAS</a></li>
-                            <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
-                            <li><a href="">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
-                            <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
-                            <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
-                            <li><a href="login.php">SALIR <i class="fas fa-stop"></i></a></li>
-                        </ul>
-                    </nav>
-                </header>
-                <div class="area_trabajo">
-                <center><a> ENTRADAS </a></center>
-<form id="Entrada" method="POST">
-<table>
-  <tr>
-    <td><label id= "lblFolio" name = "lblFolio" >Folio</label></td>
-    <td><label id= "lblFolio" name = "lblFolio" >Fecha</label></td>
-    <td><label id= "lblStatus" name = "lblStatus" >Status</label></td>
-    <td><label id= "lblUsuario" name= "lblUsuario"> Usuario </label> </td>
-  </tr>
-  <tr>
-    <td><input id="txtFolio" name="txtFolio" type="text"  value = "<?php echo $_SESSION["Folio"]?>" readonly ></td>
-    <td><input id="txtFecha" name="txtFecha" type="text"  value = "<?php echo $_SESSION["fecha"]?>" readonly ></td>
-    <td><input id="txtStatus"  name="txtStatus" type="text"  value = "<?php echo $_SESSION["status"]?>" readonly ></td>
-    <td><input id="txtUsuario"name="txtUsuario" type="text" value = "<?php echo "(". $Usr. ") ". $Usrname?>" readonly ></td>
-  </tr>
-  <tr>
-    <td><label name = "lblStatus" >Cliente</label></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="3"><?php echo LlenaComboCliente($_SESSION["idcliente"]);?> </td>
-    <td>&nbsp;</td>
-  </tr>
-   <tr>
-    <td><label name = "lblComentario" >Comentario</label></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-   <tr>
-    <td colspan="3"><input name="txtComentario"  value="<?php echo  $_SESSION["comentario"] ?>" > </td>
-    <td> </td>
-  </tr>
-</table>
-<input type="submit" name="Guardar" value="Guardar" >
-<input type="submit" name="Limpiar" value="Limpiar" >
-</form>
-<div>
-
-<?PHP 
-	if (isset($_REQUEST['ddlMarca'])){
-			$_SESSION["Marca"] = $_REQUEST['ddlMarca'];
-			if ( isset($_REQUEST['ddlModelo'])){
-				$_SESSION["Modelo"] = $_REQUEST['ddlModelo'];
-				if (isset($_REQUEST['GuardaLllanta'])){
-					if (!GuardaLlanta())
-						echo "<h1> ERROR</h1> ";
+		<?PHP 
+			if (isset($_REQUEST['ddlMarca'])){
+					$_SESSION["Marca"] = $_REQUEST['ddlMarca'];
+					if ( isset($_REQUEST['ddlModelo'])){
+						$_SESSION["Modelo"] = $_REQUEST['ddlModelo'];
+						if (isset($_REQUEST['GuardaLllanta'])){
+							if (!GuardaLlanta())
+								echo "<h1> ERROR</h1> ";
+							else
+								formularioLlantas($_SESSION["Folio"]);	
+						}
+						else
+							formularioLlantas($_SESSION["Folio"]);
+					}
 					else
-						formularioLlantas($_SESSION["Folio"]);	
+						formularioLlantas($_SESSION["Folio"]);
 				}
 				else
 					formularioLlantas($_SESSION["Folio"]);
-			}
-			else
-				formularioLlantas($_SESSION["Folio"]);
-		}
-		else
-			formularioLlantas($_SESSION["Folio"]);
-	LLenaGWLanntas($_SESSION["Folio"]);	
-?>
+			LLenaGWLanntas($_SESSION["Folio"]);	
+		?>
 </div>
  </div>
 
@@ -203,7 +202,7 @@
 		$Combo = "";
 		$i=0;
 		if(pg_num_rows($Rst)>0){
-			$Combo = "<Select id= 'DDLCliente' name='ddlCliente'>";
+			$Combo = "<Select class='form-select'  id= 'DDLCliente' name='ddlCliente'>";
 			while($row=pg_fetch_array($Rst)){
 				if($i==0)
 				if ($cliente == '' )
@@ -233,23 +232,26 @@
 	if(isset($_REQUEST["Marca"]))
 		$marca = $_REQUEST["Marca"];
 		if($prmFolio!=""){
-			echo '<form id="LLantas"> 
-				<table>
-					  <tr>
-						<td><label id= "lblMatricula" name = "lblFolio" >Numero de serie</label></td>
-						<td><label id= "lblMarca" name = "lblFolio" >Marca</label></td>
-						<td><label id= "lblModelo" name = "lblStatus" >Modelo</label></td>
-						<td><label id= "Trabajo" name= "lblUsuario"> Trabajo </label> </td>
-						<td> </td>
-					  </tr>
-					  <tr>
-						<td><input type="text" name="txtNumSerie"> </td>
-						<td>'. ComboMarcas() .'</td>
-						<td>'. ComboModelo($_SESSION["Marca"]).'</td>
-						<td>'. ComboTrabajo($_SESSION["Modelo"]).'</td>
-						<td> <input type="submit" name="GuardaLllanta" value="Agregar" ></td>
-					  </tr>
-				</table>
+			echo '<form id="LLantas">
+			<div class="entry-form__header">
+				<div class="aling__input">
+					<label id= "lblMatricula" name = "lblFolio" >Numero de serie</label>
+					<input class="form-llanta" type="text" name="txtNumSerie">
+				</div>
+				<div class="aling__input">
+					<label id= "lblMarca" name = "lblFolio" >Marca</label>
+					'. ComboMarcas() .'
+				</div>
+				<div class="aling__input">
+					<label id= "lblModelo" name = "lblStatus" >Modelo</label>
+					'. ComboModelo($_SESSION["Marca"]).'
+				</div>
+				<div class="aling__input">
+					<label id= "Trabajo" name= "lblUsuario"> Trabajo </label>
+					'. ComboTrabajo($_SESSION["Modelo"]).'
+				</div>
+				<input class="buttons-save" type="submit" name="GuardaLllanta" value="Agregar" >
+			</div>
 			</form>';
 		}
 	}
@@ -265,7 +267,7 @@
 		$Combo = "";
 		$i=0;
 		if(pg_num_rows($Rst)>0){
-			$Combo = '<select onchange="this.form.submit()" name ="ddlMarca">';
+			$Combo = '<select class="form-llanta" onchange="this.form.submit()" name ="ddlMarca">';
 			while($row=pg_fetch_array($Rst)){
 				if($i==0)
 					$Combo .="<option value='-1'> --Seleccionar--</option>\n";
@@ -286,7 +288,7 @@
 		$Modelo="";
 		if ($_SESSION["Modelo"]!="" and $_SESSION["Modelo"] !="-1")
 			$Modelo = $_SESSION["Modelo"];
-		$Combo = "<select onchange='this.form.submit()' name ='ddlModelo'>";
+		$Combo = "<select class='form-llanta__select' style='with= auto;' onchange='this.form.submit()' name ='ddlModelo'>";
 		if ($Marca !="" and $Marca !="-1"){
 			$Consulta ="Select m.idmodelo, m.idmarca, m.modelo, ma.marca, m.status from modelo m, marcas ma where m.idmarca = ma.idmarca and m.status ='AC' and m.idmarca=$Marca ";
 			$ClsCn->conecta();
@@ -312,7 +314,7 @@
 	
 	function  ComboTrabajo($Modelo){
 		global $ClsCn;
-		$Combo = "<select  name ='ddlTrabajo'>";
+		$Combo = "<select class='form-llanta__select' style='with= auto;' name ='ddlTrabajo'>";
 		if ($Modelo !="" and $Modelo !="-1"){
 			$Consulta = "select t.idtrabajo, t.desctrabajo, t.status, t.idmodelo, m.modelo from trabajo t, modelo m where t.idmodelo = m.idmodelo and m.idmodelo = $Modelo ";
 			$ClsCn->conecta();
@@ -340,14 +342,14 @@
 			$ClsCn->conecta();
 			$result = $ClsCn->EjecutaConsulta($Consulta);
 			$rows =pg_numrows($result);
-			$tabla = "<table border='2' height='100%' width='100%'>\n
+			$tabla = "<div class='content__table'><table>\n
 					<thead>\n
-					<tr bgcolor='blue' >\n
-					<th>  idllanta  </th>\n
-					<th>  numero de serie  </th>\n
-					<th>  marca  </th>\n
-					<th>  modelo  </th>\n
-					<th>  trabajo  </th>\n
+					<tr>\n
+					<th>  idLlanta  </th>\n
+					<th>  Número de serie  </th>\n
+					<th>  Marca  </th>\n
+					<th>  Modelo  </th>\n
+					<th>  Trabajo  </th>\n
 					</tr>\n
 					</thead>\n";
 			for($i=0;$i<$rows;$i++){
@@ -361,7 +363,7 @@
 						"</tr>\n";
 	
 			}
-			$tabla .="</table>";
+			$tabla .="</table></div>";
 			echo $tabla;
 		}
 	}

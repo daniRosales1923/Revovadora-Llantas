@@ -51,7 +51,8 @@
                     <div class="title">
                         <h2 class="item_title">Renovadora de llantas</h2>
                     </div>
-                    <input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
+                    <input class="burger-check" id="burger-check" type="checkbox">
+                    <label for="burger-check" class="burger"></label>
                     <nav class="navigation">
                         <ul>
                             <li><a href="Entradas.php">ENTRADAS</a></li>
