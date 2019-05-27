@@ -112,6 +112,7 @@
         </section>
 		<footer class="footer">
 				<p class="footer-text">
+               
                 <i class="fas fa-copyright"></i> Todos los derechos reservados - Instituto Tecnologico de Orizaba. <br>
 					Diseñado por alumnos del plantel.
 				</p>
