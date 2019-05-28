@@ -4,6 +4,13 @@
   margin: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
+  *::-webkit-scrollbar {
+    width: 8px;
+    /* Tamaño del scroll en vertical */
+    height: 8px;
+    /* Tamaño del scroll en horizontal */
+    display: none;
+    /* Ocultar scroll */ }
 
 body,
 html {
@@ -426,6 +433,13 @@ html {
   margin: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
+  *::-webkit-scrollbar {
+    width: 8px;
+    /* Tamaño del scroll en vertical */
+    height: 8px;
+    /* Tamaño del scroll en horizontal */
+    display: none;
+    /* Ocultar scroll */ }
 
 body,
 html {
@@ -506,6 +520,16 @@ html {
         -ms-flex-direction: row;
         flex-direction: row;
         padding: 5px 110px; } }
+  .entry-form__header-report {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 5px 0; }
   .entry-form__footer {
     width: -webkit-fill-available;
     display: -webkit-box;
@@ -624,6 +648,36 @@ html {
     background-color: #263238;
     color: white; }
 
+.content__table-report {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 10px;
+  width: 700px;
+  height: 550px;
+  width: 100%;
+  overflow-x: hidden; }
+  .content__table-report::-webkit-scrollbar {
+    width: 8px;
+    /* Tamaño del scroll en vertical */
+    height: 8px;
+    /* Tamaño del scroll en horizontal */
+    display: none;
+    /* Ocultar scroll */ }
+  .content__table-report table {
+    width: 100%;
+    border-collapse: collapse; }
+  .content__table-report th,
+  .content__table-report td {
+    text-align: left;
+    padding: 8px; }
+  .content__table-report tr:nth-child(even) {
+    background-color: #9c99998a; }
+  .content__table-report th {
+    background-color: #263238;
+    color: white;
+    font-size: 1em; }
+
 .check {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -631,3 +685,9 @@ html {
   -webkit-box-align: end;
   -ms-flex-align: end;
   align-items: flex-end; }
+
+.folio {
+  width: 100px;
+  height: 30px;
+  border-radius: 8px;
+  text-align: center; }
