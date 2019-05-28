@@ -13,6 +13,23 @@
 		$ClsCn = new ConexionDatos();
 		$Ins = new Insertadatos();
 		$Consultas = new Consultas();
+		/* Variables session Entrada */
+		$_SESSION["Folio"]="";
+		$_SESSION["fecha"] = "";
+		$_SESSION["comentario"]  = "";
+		$_SESSION["idcliente"] = "";
+		$_SESSION["status"]  = "";
+		$_SESSION["idllanta"] = "";
+		$_SESSION["Marca"] ="";
+		$_SESSION["Modelo"] ="";
+		/* Variables session CR*/
+		$_SESSION["idllantaCR"] = "";
+		$_SESSION["MarcaCR"] ="";
+		$_SESSION["ModeloCR"] ="";
+		$_SESSION["FolioCR"]="";
+		$_SESSION["fechaCR"] = "";
+		$_SESSION["comentarioCR"]  = "";
+		$_SESSION["statusCR"]  = "";
     }else{
  		header('Location: LogIn.php');
      	die() ;
@@ -53,7 +70,7 @@
                             <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
                             <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
                             <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
-                            <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+                            <li><a href="Usuarios.php">USUARIOS <i class="fas fa-users"></i></a></li>
                             <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
                         </ul>
                     </nav>
@@ -139,7 +156,7 @@
 				//header("location:Ventas.php");
 			}
 		}
-		echo '             <form id="Venta" method="POST"> 
+		echo '<form id="Venta" method="POST"> 
                             <table>
                                 <tr>
                                     <td><label id= "lblFolio" name = "lblFolio" >Folio</label></td>

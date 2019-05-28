@@ -100,6 +100,11 @@
 			return $query;
 		}
 		
+		function DatosUsuarios(){
+			return"SELECT idusuario, nombre, apellidopaterno, apellidomaterno, correo, telefono, usuario, contraseña, status FROM usuario where status = 'AC'";
+		}
+		
+		
 	}
 
 
