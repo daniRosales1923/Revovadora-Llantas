@@ -9,16 +9,28 @@
     &-form {
         &__header,
         &__body {
-            width: -webkit-fill-available;
+            width: 100%;
             display: flex;
-            flex-direction: row;
-            padding: 5px 110px;
+            flex-direction: column;
+            padding: 5px 0;
+
+            @media only screen and (min-width: 1024px) {
+                width: -webkit-fill-available;
+                flex-direction: row;
+                padding: 5px 110px;
+            }
         }
         &__footer {
             width: -webkit-fill-available;
-            padding: 5px 110px;
+            // padding: 5px 110px;
             display: flex;
             flex-direction: column;
+
+            @media only screen and (min-width: 1024px) {
+                width: -webkit-fill-available;
+                flex-direction: row;
+                padding: 5px 110px;
+            }
         }
     }
 }
@@ -47,6 +59,11 @@
             height: 30px;
             border-radius: 8px;
             text-align: center;
+            width: min-content;
+
+            @media only screen and (min-width: 1024px) {
+                width: min-content;
+            }
         }
     }
 
@@ -85,7 +102,20 @@
 
 .content__table {
     display: flex;
-    padding: 5px 110px;
+    padding: 0 10px;
+    width: 320px;
+    height:500px;
+    height: 550px;
+    overflow-x: scroll;
+
+    @media only screen and (min-width: 1024px) {
+        display: flex;
+        padding: 5px 110px;
+        height:500px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
     // justify-content: center;
     table {
         width: 100%;
@@ -103,4 +133,9 @@
         background-color: $gray;
         color: white;
     }
+}
+
+.check{
+    display: flex;
+    align-items: flex-end;
 }
