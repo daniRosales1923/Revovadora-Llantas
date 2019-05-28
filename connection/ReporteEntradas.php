@@ -47,27 +47,27 @@
 <title>Reporte Entradas</title>
 </head>
 
-<body style="background-color: #9c99998a ">
+<body style="background-color: #9c99998a">
     <form class="entry" id="Reporte" method="POSTS" style="padding: 10px;">
-			<div class="entry-form__header-report"> 
-				<div class="aling__input"> 
-					<label id= "lblFolio" name = "lblFolio" >Folio inicial</label> 
-					<input class="folio"  type="text" name="txtFolIni">
-				</div> 
-				<div class="aling__input"> 
-					<label id= "lblFolio" name = "lblFolio" >Folio final</label> 
-					<input class="folio" type="text" name="txtFolFin">
-				</div> 
-				<div class="aling__input"> 
-					<label id= "lblStatus" name = "lblStatus" >Usuario</label> 
-					<?php echo ComboUsuario();?>
-				</div> 
-				<div class="aling__input"> 
-					<label id= "lblStatus" name = "lblStatus" >Cliente</label> 
-					<?php echo ComboCliente();?>
-				</div>
-				<input class="buttons-save" type="submit" name="llenar" value="Llenar">
+		<div class="entry-form__header-report"> 
+			<div class="aling__input"> 
+				<label id= "lblFolio" name = "lblFolio" >Folio inicial</label> 
+				<input class="folio"  type="text" name="txtFolIni">
 			</div> 
+			<div class="aling__input"> 
+				<label id= "lblFolio" name = "lblFolio" >Folio final</label> 
+				<input class="folio" type="text" name="txtFolFin">
+			</div> 
+			<div class="aling__input"> 
+				<label id= "lblStatus" name = "lblStatus" >Usuario</label> 
+				<?php echo ComboUsuario();?>
+			</div> 
+			<div class="aling__input"> 
+				<label id= "lblStatus" name = "lblStatus" >Cliente</label> 
+				<?php echo ComboCliente();?>
+			</div>
+			<input class="buttons-save" type="submit" name="llenar" value="Llenar">
+		</div> 
     </form>
 </body>
 </html>
