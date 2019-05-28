@@ -143,35 +143,39 @@ function checar(){
 
 	function Guardar(){
 		global $ClsCn, $Ins, $idUsr;
-		$Nombre = $_REQUEST['txtNombre'];
-		$ApPat = $_REQUEST['txtApePat'];
-		$ApMat = $_REQUEST['txtApeMat'];
-		$Correo = $_REQUEST['txtCorreo'];
-		$Telefono = $_REQUEST['txtTel'];
-		$Usuario = $_REQUEST['txtUsuario'];
-		$Pwd = $_REQUEST['txtPwd'];
-		$msj="";
-		if ($Nombre =="")
-			$msj.="Llena el campo nombre <br>";
-		if($ApPat=="")
-			$msj.="Llena el campo apellido paterno <br>";
-		if($ApMat=="")
-			$msj.="Llena el campo apellido materno <br>";
-		if($Usuario=="")
-			$msj .= "Llena el campo Usuario<br>";
-		if($Pwd=="")
-			$msj .= "Llena el campo contraseña<br>";
-		if($Correo=="")
-			$msj .= "Llena el campo Correo<br>";
-		if($Telefono=="")
-			$msj .= "Llena el campo Telefono<br>";
-		if($msj=="")
-			if ($Ins->AltaUsuarios($Nombre, $ApPat, $ApMat, $Correo, $Telefono, $Usuario, $Pwd)==1)
-					echo "Guardado";
+		if($idUsr==1000 and $Usr="admin"){
+			$Nombre = $_REQUEST['txtNombre'];
+			$ApPat = $_REQUEST['txtApePat'];
+			$ApMat = $_REQUEST['txtApeMat'];
+			$Correo = $_REQUEST['txtCorreo'];
+			$Telefono = $_REQUEST['txtTel'];
+			$Usuario = $_REQUEST['txtUsuario'];
+			$Pwd = $_REQUEST['txtPwd'];
+			$msj="";
+			if ($Nombre =="")
+				$msj.="Llena el campo nombre <br>";
+			if($ApPat=="")
+				$msj.="Llena el campo apellido paterno <br>";
+			if($ApMat=="")
+				$msj.="Llena el campo apellido materno <br>";
+			if($Usuario=="")
+				$msj .= "Llena el campo Usuario<br>";
+			if($Pwd=="")
+				$msj .= "Llena el campo contraseña<br>";
+			if($Correo=="")
+				$msj .= "Llena el campo Correo<br>";
+			if($Telefono=="")
+				$msj .= "Llena el campo Telefono<br>";
+			if($msj=="")
+				if ($Ins->AltaUsuarios($Nombre, $ApPat, $ApMat, $Correo, $Telefono, $Usuario, $Pwd)==1)
+						echo "Guardado";
+				else
+					echo "<h1>Error</h1>";
 			else
-				echo "<h1>Error</h1>";
+				echo $msj;
+		}
 		else
-			echo $msj;
+			echo "NO ERES USUARIO ADMIN";
 	}
 	
 	function LlenaGWUsuario(){

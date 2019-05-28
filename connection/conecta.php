@@ -39,7 +39,7 @@
 		}
 		
 		function DatosUsuario($Usr, $Pwd){
-            $Condicion = "Where U.idusuario = U.idusuario And U.status = 'AC' ";
+            $Condicion = "Where U.idusuario = U.idusuario ";
             if ($Usr!=""){
                 $Condicion = $Condicion ."And U.Usuario = '$Usr'";
                 if ($Pwd!=""){
