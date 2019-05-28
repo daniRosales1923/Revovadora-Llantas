@@ -60,7 +60,7 @@
 				<input class="burger-check" id="burger-check" type="checkbox"><label for="burger-check" class="burger"></label>
 				<nav class="navigation">
 					<ul>
-						<li class="active"><a style="color: #9e9e9ed6;" href="Entradas.php">ENTRADAS</a></li>
+						<li class="active"><a style="color: #9e9e9ed6;" href="">ENTRADAS</a></li>
 						<li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
 						<li><a href="Ventas.php">VENTA <i class="fas fa-dollar-sign"></i></a></li>
 						<li><a href="Reportes.php">REPORTES <i class="far fa-clipboard"></i></a></li>

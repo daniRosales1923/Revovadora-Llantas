@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Reportes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
     crossorigin="anonymous">
     <link rel="stylesheet" href = "../assets/css/entry.css">
@@ -25,7 +26,7 @@
 						<li><a href="Entradas.php">ENTRADAS</a></li>
 						<li class="active"><a style="color: #9e9e9ed6;" href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
 						<li><a href="Ventas.php">VENTA <i class="fas fa-dollar-sign"></i></a></li>
-						<li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
+						<li  class="active"><a style="color: #9e9e9ed6;" href="">REPORTES <i class="far fa-clipboard"></i></a></li>
 						<li><a href="Usuarios.php">USUARIOS <i class="fas fa-users"></i></a></li>
 						<li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
 					</ul>
