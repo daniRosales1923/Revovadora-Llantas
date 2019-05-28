@@ -1,25 +1,35 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    &::-webkit-scrollbar {
+        width: 8px;
+        /* Tamaño del scroll en vertical */
+        height: 8px;
+        /* Tamaño del scroll en horizontal */
+        display: none;
+        /* Ocultar scroll */
+    }
 }
 
-body,html{
+body,
+html {
     font-family: 'Libre Baskerville', serif;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
-$ligthgray: rgb(156, 153, 153);
+$ligthgray: #9c99998a;
 $gray: #263238;
 $white:#FFFFFF;
 $blue: #007bff;
+$lightBlue: #00bcd470;
 $lightorange: #ff9c00;
 $orange: #ea441c;
 $aqua: #00bbca;
 $red: #de0309;
 $Amarillo: #FFBF00;
 $Azul: #126180;
-
+$font-button: .95em;
 $title: 1.2em;
 $title-md: 2em;
 $title-lg: 2.8em;
