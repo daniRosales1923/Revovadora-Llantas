@@ -66,7 +66,7 @@
                         <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
                         <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
                         <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
-                        <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+                        <li><a href="Usuarios.php">USUARIOS <i class="fas fa-users"></i></a></li>
                         <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
                     </ul>
                 </nav>
