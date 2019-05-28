@@ -39,10 +39,9 @@
 <html lang="es">
     <head>
     <meta charset=“UTF-8”>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
     crossorigin="anonymous">
-    <link rel="stylesheet" href = "../assets/css/main.css">
+    <link rel="stylesheet" href = "../assets/css/entry.css">
     </head>
 
     <body>
@@ -65,8 +64,8 @@
                         <li><a href="Entradas.php">ENTRADAS</a></li>
                         <li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
                         <li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
-                        <li><a href="">REPORTES <i class="far fa-clipboard"></i></a></li>
-                        <li><a href="">USUARIOS <i class="fas fa-users"></i></a></li>
+                        <li><a href="Reportes.php">REPORTES <i class="far fa-clipboard"></i></a></li>
+                        <li><a href="Usuarios.php">USUARIOS <i class="fas fa-users"></i></a></li>
                         <li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
                     </ul>
                 </nav>
