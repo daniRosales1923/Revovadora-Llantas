@@ -11,7 +11,7 @@
 			global $Host, $User, $Password, $DataBase;
 		    $Host = "localhost";
 			$User = "postgres";
-			$Password= "1234";
+			$Password= "benji$99";
 			$DataBase = "Renovadora";
 		}
 
