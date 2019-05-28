@@ -47,28 +47,27 @@
 <title>Reporte Entradas</title>
 </head>
 
-<body>
-    <form id="Reporte" method="POSTS">
-        <table >
-          <tr>
-            <td><label>Folio Inicial</label></td>
-            <td><label>Folio Final</label></td>
-            <td><label>Usuario</label></td>
-            <td><label>Cliente</label></td>
-          </tr>
-          <tr>
-            <td><input   type="text" name="txtFolIni" width="80px"></td>
-            <td><input   type="text" name="txtFolFin" width="80px"></td>
-            <td><?php echo ComboUsuario();?></td>
-            <td><?php echo ComboCliente();?></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td><input class="buttons-save" type="submit" name="llenar" value="Llenar" width="100%"></td>
-          </tr>
-        </table>
+<body style="background-color: #9c99998a ">
+    <form class="entry" id="Reporte" method="POSTS" style="padding: 10px;">
+			<div class="entry-form__header-report"> 
+				<div class="aling__input"> 
+					<label id= "lblFolio" name = "lblFolio" >Folio inicial</label> 
+					<input class="folio"  type="text" name="txtFolIni">
+				</div> 
+				<div class="aling__input"> 
+					<label id= "lblFolio" name = "lblFolio" >Folio final</label> 
+					<input class="folio" type="text" name="txtFolFin">
+				</div> 
+				<div class="aling__input"> 
+					<label id= "lblStatus" name = "lblStatus" >Usuario</label> 
+					<?php echo ComboUsuario();?>
+				</div> 
+				<div class="aling__input"> 
+					<label id= "lblStatus" name = "lblStatus" >Cliente</label> 
+					<?php echo ComboCliente();?>
+				</div>
+				<input class="buttons-save" type="submit" name="llenar" value="Llenar">
+			</div> 
     </form>
 </body>
 </html>
@@ -125,7 +124,7 @@
 		$ClsCn->Conecta();
 		$result = $ClsCn->EjecutaConsulta($query);
 		$rows =pg_numrows($result);
-			$tabla = "<div class='content__table'><table >\n
+			$tabla = "<div class='content__table-report'><table >\n
 					<thead>\n
 					<tr>\n
 					<th>  FOLIO  </th>\n
@@ -133,7 +132,7 @@
 					<th>  USUARIO  </th>\n
 					<th>  CLIENTE  </th>\n
 					<th>  IDLLANTA  </th>\n
-					<th>  NUMERO DE SERIE  </th>\n
+					<th>  NUM. SERIE  </th>\n
 					<th>  MARCA  </th>\n
 					<th>  MODELO  </th>\n
 					<th>  TRABAJO  </th>\n
