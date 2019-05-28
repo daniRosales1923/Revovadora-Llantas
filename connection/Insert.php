@@ -142,7 +142,22 @@
 					$IDdetalle++;
 				}
 			}
+			$ClsCn->Desconecta();
 			return $band;
+		}
+		
+		
+		function AltaUsuarios($prmNombre, $prmApPat, $prmApMat, $prmCorreo, $prmTel, $Usuario, $prmPwd){
+				global $ClsCn;
+				$query ="INSERT INTO public.usuario(nombre, apellidopaterno, apellidomaterno, correo, telefono, usuario,contraseña, status) VALUES ('$prmNombre', '$prmApPat', '$prmApMat', '$prmCorreo', '$prmTel', '$Usuario', '$prmPwd','AC')";
+				$ClsCn->Conecta();
+				$Rst=$ClsCn->EjecutaConsulta($query);
+				if($Rst)
+					$ban = 1;
+				else
+					$ban =0;
+				$ClsCn->Desconecta();
+				return $ban;
 		}
 	}
 
