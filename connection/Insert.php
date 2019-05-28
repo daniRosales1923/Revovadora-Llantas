@@ -63,7 +63,7 @@
 			$i=0;
 			$ren=pg_num_rows($Rst);
 			if($ren>0){
-				while($row=pg_fetch_array($Rst) and $prmTrabajo!= $row["idtrabajo"]){
+				while($row=pg_fetch_array($Rst) and $prmTrabajo != $row["idtrabajo"]){
 					$idconcentrado	= $row["idconcentrado"];
 					$i++;
 				}

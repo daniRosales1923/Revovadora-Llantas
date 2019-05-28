@@ -260,10 +260,6 @@
 			echo '<form id="LLantas">
 			<div class="entry-form__header">
 				<div class="aling__input">
-					<label id= "lblMatricula" name = "lblFolio" >Numero de serie</label>
-					<input class="form-llanta" type="text" name="txtNumSerie">
-				</div>
-				<div class="aling__input">
 					<label id= "lblMarca" name = "lblFolio" >Marca</label>
 					'. ComboMarcas() .'
 				</div>
@@ -274,6 +270,10 @@
 				<div class="aling__input">
 					<label id= "Trabajo" name= "lblUsuario"> Trabajo </label>
 					'. ComboTrabajo($_SESSION["Modelo"]).'
+				</div>
+				<div class="aling__input">
+					<label id= "lblMatricula" name = "lblFolio" >Numero de serie</label>
+					<input class="form-llanta" type="text" name="txtNumSerie">
 				</div>
 				<input class="buttons-save" type="submit" name="GuardaLllanta" value="Agregar" >
 			</div>
