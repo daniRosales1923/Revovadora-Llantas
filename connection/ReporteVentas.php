@@ -40,33 +40,34 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href = "../assets/css/entry.css">
 <title>Documento sin título</title>
 </head>
 
-<body>
+<body style="background-color: #9c99998a">
 
- <form id="Reporte" method="POSTS">
-        <table >
-          <tr>
-            <td><label>Folio Inicial</label></td>
-            <td><label>Folio Final</label></td>
-            <td><label>Usuario</label></td>
-            <td><label>Cliente</label></td>
-          </tr>
-          <tr>
-            <td><input class="form__input"  type="text" name="txtFolIni" width="80px"></td>
-            <td><input class="form__input" type="text" name="txtFolFin" width="80px"></td>
-            <td><?php echo ComboUsuario();?></td>
-            <td><?php echo ComboCliente();?></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td><input class="buttons-save" type="submit" name="llenar" value="Llenar" width="100%"></td>
-          </tr>
-        </table>
-    </form>
+ <form id="Reporte" method="POSTS" style="padding: 10px;" class="entry">
+		<div class="entry-form__header-report"> 
+				<div class="aling__input"> 
+					<label id= "lblFolio" name = "lblFolio" >Folio inicial</label> 
+					<input class="folio"  type="text" name="txtFolIni">
+				</div> 
+				<div class="aling__input"> 
+					<label id= "lblFolio" name = "lblFolio" >Folio final</label> 
+					<input class="folio" type="text" name="txtFolFin">
+				</div> 
+				<div class="aling__input"> 
+					<label id= "lblStatus" name = "lblStatus" >Usuario</label> 
+					<?php echo ComboUsuario();?>
+				</div> 
+				<div class="aling__input"> 
+					<label id= "lblStatus" name = "lblStatus" >Cliente</label> 
+					<?php echo ComboCliente();?>
+				</div>
+				<input class="buttons-save" type="submit" name="llenar" value="Llenar">
+		</div> 
+  </form>
 </body>
 </html>
 <?php
@@ -122,7 +123,7 @@
 		$ClsCn->Conecta();
 		$result = $ClsCn->EjecutaConsulta($query);
 		$rows =pg_numrows($result);
-			$tabla = "<div class='content__table'> <table>\n
+			$tabla = "<div class='content__table-report'><table>\n
 					<thead>\n
 					<tr bgcolor='blue' >\n
 					<th>  FOLIO </th>\n
