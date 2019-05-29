@@ -62,7 +62,16 @@
 						<li><a href="Entradas.php">ENTRADAS</a></li>
 						<li class="active"><a style="color: #9e9e9ed6;" href="">CONCENTRADO RENOVADO</a></li>
 						<li><a href="Ventas.php">VENTA <i class="fas fa-dollar-sign"></i></a></li>
-						<li><a href="Reportes.php">REPORTES <i class="far fa-clipboard"></i></a></li>
+						<li>
+							<div class="dropdown">
+									<button class="dropbtn">REPORTES <i class="far fa-clipboard"></i> </button>
+									<div class="dropdown-content">
+											<a href="ReporteEntradas.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes entradas</a> 
+											<a href="ReporteConcentrado.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes Concentrado Renovado</a> 
+											<a href="ReporteVentas.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes Ventas</a> 
+									</div>
+							</div>
+						</li>
 						<li><a href="Usuarios.php">USUARIOS <i class="fas fa-users"></i></a></li>
 						<li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
 					</ul>

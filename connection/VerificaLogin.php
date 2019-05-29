@@ -1,3 +1,18 @@
+<script language="JavaScript">
+  function redireccionar() {
+    setTimeout("location.href='http://www.miweb.com'", 5000);
+  }
+  </script>
+  <html>
+  <head>
+  <title>Verifica Login</title>
+  <script language="JavaScript">
+  function redireccionar() {
+    setTimeout("location.href='Login.php'", 3000);
+  }
+  </script>
+  </head>
+  <body onLoad="redireccionar();">
 <?php
 session_start(); 
 
@@ -9,21 +24,25 @@ session_start();
         $ClsCn->conecta();
         $result = $ClsCn->DatosUsuario($_POST['“txtusr”'], $_POST['“txtpwd”'] );
         $rows =pg_numrows($result);
-        $arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
-        $IdUsr = $arr["idusuario"];
-        if ($IdUsr != ""){
-				/* variables de sesion para los usuarios */
-                $_SESSION['idusr'] = $arr['idusuario'];
-                $_SESSION['nombre'] = $arr['nombre'];
-                $_SESSION['apellido'] = $arr['apellidopaterno'];
-                $_SESSION['usuario'] = $arr['usuario'];
-				
-                $_SESSION['start'] = time();
-                $_SESSION['expire'] = $_SESSION['start'] + (10 * 60) ;
-                header('Location: Menu.php');
-                die() ;
-        }
-        else{
-            
-        }
+		if($rows>0){
+			$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
+			$IdUsr = $arr["idusuario"];
+			if ($IdUsr != ""){
+					/* variables de sesion para los usuarios */
+					$_SESSION['idusr'] = $arr['idusuario'];
+					$_SESSION['nombre'] = $arr['nombre'];
+					$_SESSION['apellido'] = $arr['apellidopaterno'];
+					$_SESSION['usuario'] = $arr['usuario'];
+					
+					$_SESSION['start'] = time();
+					$_SESSION['expire'] = $_SESSION['start'] + (10 * 60) ;
+					header('Location: Menu.php');
+					die() ;
+			}
+			$ClsCn->Desconecta();
+		}
+		else
+			echo	"<h1>Usuario o Contraseña Incorrectos...</h1>";
 ?>
+</body>
+</html>

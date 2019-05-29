@@ -66,7 +66,16 @@
 						<li><a href="Entradas.php">ENTRADAS</a></li>
 						<li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
 						<li class="active"><a style="color: #9e9e9ed6;" href="">VENTA <i class="fas fa-dollar-sign"></i></a></li>
-						<li><a href="Reportes.php">REPORTES <i class="far fa-clipboard"></i></a></li>
+						<li>
+							<div class="dropdown">
+									<button class="dropbtn">REPORTES <i class="far fa-clipboard"></i> </button>
+									<div class="dropdown-content">
+											<a href="ReporteEntradas.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes entradas</a> 
+											<a href="ReporteConcentrado.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes Concentrado Renovado</a> 
+											<a href="ReporteVentas.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes Ventas</a> 
+									</div>
+							</div>
+						</li>
 						<li><a href="Usuarios.php">USUARIOS <i class="fas fa-users"></i></a></li>
 						<li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
 					</ul>
@@ -133,7 +142,10 @@
 	}
 	
 	function Restaura($prmFolio){
-		global $ClsCn,$Consultas, $Usr, $Usrname;
+		global $ClsCn,$Consultas, $idUsr, $Usr, $Usrname;
+		$ImgPlus="";
+		if($idUsr==1000 and $Usr="admin")
+			$ImgPlus ='<a title="Nuevo cliente" href="AltaClientes.php" target="_blank" onClick="window.open(this.href, this.target, '."'width=1000,height=600'".'); return false;"><img src="../assets/img/Nuevo.png" width="20px" height="20px"></a> ';
 		$btnGuarda='<input class="buttons-save" type="submit" name="Guardar" value="Guardar" >';
 		if ($prmFolio !=""){
 			$btnGuarda="";
@@ -174,7 +186,7 @@
 					<input class="form" id="txtUsuario"name="txtUsuario" type="text" value = "('. $Usr. ')'. $Usrname.'" readonly > 
 				</div> 
 				<div class="aling__input"> 
-					<label name = "lblStatus" >Cliente</label> 
+					<label name = "lblStatus" >'.$ImgPlus.'Cliente</label> 
 					'.LlenaComboCliente($_SESSION["idclienteVT"]).'  
 				</div> 
 			</div>	

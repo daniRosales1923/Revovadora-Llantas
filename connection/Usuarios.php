@@ -63,7 +63,16 @@ function checar(){
 											<li><a href="Entradas.php">ENTRADAS</a></li>
 											<li><a href="concentradorenovado.php">CONCENTRADO RENOVADO</a></li>
 											<li><a href="Ventas.php">VENTAS <i class="fas fa-dollar-sign"></i></a></li>
-											<li><a href="Reportes.php">REPORTES <i class="far fa-clipboard"></i></a></li>
+											<li>
+												<div class="dropdown">
+													<button class="dropbtn">REPORTES <i class="far fa-clipboard"></i> </button>
+													<div class="dropdown-content">
+														<a href="ReporteEntradas.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes entradas</a> 
+														<a href="ReporteConcentrado.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes Concentrado Renovado</a> 
+                                						<a href="ReporteVentas.php" target="_blank" onClick="window.open(this.href, this.target, 'width=1000,height=600'); return false;">Reportes Ventas</a> 
+													</div>
+												</div>
+											</li>
 											<li  class="active"><a style="color: #9e9e9ed6;" href="">USUARIOS <i class="fas fa-users"></i></a></li>
 											<li><a href="login.php">SALIR <i class="fas fa-exit"></i></a></li>
 									</ul>
@@ -117,7 +126,7 @@ function checar(){
 	<div class="buttons">
 		<input class="buttons-save" type="submit" id="Guardar" name="Guardar" value="Guardar" style="visibility:hidden; display:none">
 	</div>
-</form>';
+</form>
 
 <?php 
 	if (isset($_REQUEST['Guardar'])){
@@ -143,35 +152,39 @@ function checar(){
 
 	function Guardar(){
 		global $ClsCn, $Ins, $idUsr;
-		$Nombre = $_REQUEST['txtNombre'];
-		$ApPat = $_REQUEST['txtApePat'];
-		$ApMat = $_REQUEST['txtApeMat'];
-		$Correo = $_REQUEST['txtCorreo'];
-		$Telefono = $_REQUEST['txtTel'];
-		$Usuario = $_REQUEST['txtUsuario'];
-		$Pwd = $_REQUEST['txtPwd'];
-		$msj="";
-		if ($Nombre =="")
-			$msj.="Llena el campo nombre <br>";
-		if($ApPat=="")
-			$msj.="Llena el campo apellido paterno <br>";
-		if($ApMat=="")
-			$msj.="Llena el campo apellido materno <br>";
-		if($Usuario=="")
-			$msj .= "Llena el campo Usuario<br>";
-		if($Pwd=="")
-			$msj .= "Llena el campo contraseña<br>";
-		if($Correo=="")
-			$msj .= "Llena el campo Correo<br>";
-		if($Telefono=="")
-			$msj .= "Llena el campo Telefono<br>";
-		if($msj=="")
-			if ($Ins->AltaUsuarios($Nombre, $ApPat, $ApMat, $Correo, $Telefono, $Usuario, $Pwd)==1)
-					echo "Guardado";
+		if($idUsr==1000 and $Usr="admin"){
+			$Nombre = $_REQUEST['txtNombre'];
+			$ApPat = $_REQUEST['txtApePat'];
+			$ApMat = $_REQUEST['txtApeMat'];
+			$Correo = $_REQUEST['txtCorreo'];
+			$Telefono = $_REQUEST['txtTel'];
+			$Usuario = $_REQUEST['txtUsuario'];
+			$Pwd = $_REQUEST['txtPwd'];
+			$msj="";
+			if ($Nombre =="")
+				$msj.="Llena el campo nombre <br>";
+			if($ApPat=="")
+				$msj.="Llena el campo apellido paterno <br>";
+			if($ApMat=="")
+				$msj.="Llena el campo apellido materno <br>";
+			if($Usuario=="")
+				$msj .= "Llena el campo Usuario<br>";
+			if($Pwd=="")
+				$msj .= "Llena el campo contraseña<br>";
+			if($Correo=="")
+				$msj .= "Llena el campo Correo<br>";
+			if($Telefono=="")
+				$msj .= "Llena el campo Telefono<br>";
+			if($msj=="")
+				if ($Ins->AltaUsuarios($Nombre, $ApPat, $ApMat, $Correo, $Telefono, $Usuario, $Pwd)==1)
+						echo "Guardado";
+				else
+					echo "<h1>Error</h1>";
 			else
-				echo "<h1>Error</h1>";
+				echo $msj;
+		}
 		else
-			echo $msj;
+			echo "NO ERES USUARIO ADMIN";
 	}
 	
 	function LlenaGWUsuario(){
