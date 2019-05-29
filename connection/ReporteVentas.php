@@ -42,13 +42,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href = "../assets/css/entry.css">
-<title>Documento sin título</title>
+<title>Reporte Ventas</title>
+<script>
+function imprimir(){
+var printContents = document.getElementById('Imp').outerHTML;
+        w = window.open();
+		w.document.write('<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href = "../assets/css/entry.css"><body><center>REPORTE DE VENTAS </center>');
+        w.document.write(printContents);
+		w.document.write('</body></html>');
+        w.document.close(); // necessary for IE >= 10
+        w.focus(); // necessary for IE >= 10
+		w.print();
+		w.close();
+        return true;}
+</script>
 </head>
 
 <body style="background-color: #9c99998a">
 
+
  <form id="Reporte" method="POSTS" style="padding: 10px;" class="entry">
-		<div class="entry-form__header-report"> 
+		<div  class="entry-form__header-report"> 
 				<div class="aling__input"> 
 					<label id= "lblFolio" name = "lblFolio" >Folio inicial</label> 
 					<input class="folio"  type="text" name="txtFolIni">
@@ -119,11 +133,13 @@
 	function llenatabla(){
 		global $ClsCn;
 		$Condicion = creacondicion();
+		$total=0;
 		$query = "select s.idsalida, s.iddetsalida, s.idconcentrado, s.iddetconcen, s.idllanta, dl.descripcion, t.desctrabajo, s.monto from salidas v, salidasdetalle s, datosllantas dl, trabajo t,concetradorenovadodetalle cd, concentradorenovado c  where v.idsalida = s.idsalida and s.idconcentrado = c.idconcentrado and s.iddetconcen = cd.iddetalle and s.idllanta = cd.idllanta and cd.idllanta = dl.idllanta and  cd.idtrabajo = t.idtrabajo  $Condicion order by s.idllanta, s.iddetsalida";
 		$ClsCn->Conecta();
 		$result = $ClsCn->EjecutaConsulta($query);
 		$rows =pg_numrows($result);
-			$tabla = "<div class='content__table-report'><table>\n
+			$tabla = "<input type='image' onclick='imprimir();'  src='../assets/img/impresora.png' width='30px' height='30px'>
+			<div id='Imp' class='content__table-report'><table>\n
 					<thead>\n
 					<tr bgcolor='blue' >\n
 					<th>  FOLIO </th>\n
@@ -150,7 +166,8 @@
 						"<td></td>\n".
 						"<td></td>\n".
 						"<td></td>\n".
-						"<td>Total a pagar</td>\n".
+						"<td></td>\n".
+						"<td>Total </td>\n".
 						"<td>$".$total."</td>\n".
 						"</tr>\n";
 			$tabla .="</table></div>";

@@ -142,7 +142,10 @@
 	}
 	
 	function Restaura($prmFolio){
-		global $ClsCn,$Consultas, $Usr, $Usrname;
+		global $ClsCn,$Consultas, $idUsr, $Usr, $Usrname;
+		$ImgPlus="";
+		if($idUsr==1000 and $Usr="admin")
+			$ImgPlus ='<a title="Nuevo cliente" href="AltaClientes.php" target="_blank" onClick="window.open(this.href, this.target, '."'width=1000,height=600'".'); return false;"><img src="../assets/img/Nuevo.png" width="20px" height="20px"></a> ';
 		$btnGuarda='<input class="buttons-save" type="submit" name="Guardar" value="Guardar" >';
 		if ($prmFolio !=""){
 			$btnGuarda="";
@@ -183,7 +186,7 @@
 					<input class="form" id="txtUsuario"name="txtUsuario" type="text" value = "('. $Usr. ')'. $Usrname.'" readonly > 
 				</div> 
 				<div class="aling__input"> 
-					<label name = "lblStatus" >Cliente</label> 
+					<label name = "lblStatus" >'.$ImgPlus.'Cliente</label> 
 					'.LlenaComboCliente($_SESSION["idclienteVT"]).'  
 				</div> 
 			</div>	
