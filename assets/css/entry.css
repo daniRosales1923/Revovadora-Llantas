@@ -665,7 +665,6 @@ html {
   display: flex;
   padding: 0 10px;
   width: 320px;
-  height: 500px;
   height: 550px;
   overflow-x: scroll; }
   @media only screen and (min-width: 1024px) {
@@ -676,10 +675,12 @@ html {
       padding: 5px 110px;
       height: 500px;
       width: 100%;
+      margin-top: 30px;
       overflow-x: hidden; } }
   .content__table table {
     width: 100%;
-    border-collapse: collapse; }
+    border-collapse: collapse;
+    background-color: white; }
   .content__table th,
   .content__table td {
     text-align: left;
@@ -699,13 +700,6 @@ html {
   height: 550px;
   width: 100%;
   overflow-x: hidden; }
-  .content__table-report::-webkit-scrollbar {
-    width: 8px;
-    /* Tamaño del scroll en vertical */
-    height: 8px;
-    /* Tamaño del scroll en horizontal */
-    display: none;
-    /* Ocultar scroll */ }
   .content__table-report table {
     width: 100%;
     border-collapse: collapse; }
@@ -733,3 +727,10 @@ html {
   height: 30px;
   border-radius: 8px;
   text-align: center; }
+
+.print {
+  margin: 5px 10px; }
+
+.newUser {
+  color: black;
+  padding: 1px 5px; }

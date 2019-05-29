@@ -37,57 +37,57 @@
 	<div class="entry-form__header-report"> 
 		<div class="aling__input"> 
 			<label id='lblNombre'> Nombre </label>
-			<input class="form" type="text" name='txtNombre' >
+			<input class="form" type="text" name='txtNombre' maxlength="50" pattern="[a-zA-Z]">
 		</div> 
 		<div class="aling__input"> 
 			<label id='lblApellidoP'>Apellido Paterno</label>
-			<input class="form" type="text" name='txtApePat' >
+			<input class="form" type="text" name='txtApePat' maxlength="50" pattern="[0-9]{10}">
 		</div> 
 		<div class="aling__input"> 
 			<label id='lblApellidoM'>Apellido Materno</label>
-			<input class="form" type="text" name='txtApeMat' >
+			<input class="form" type="text" name='txtApeMat' maxlength="50" pattern="[0-9]{10}">
 		</div> 
 	</div> 
 	<div class="entry-form__header-report"> 
 		<div class="aling__input"> 
 			<label id='lblCorreo'> Correo</label>
-			<input class="form" type="text" name='txtCorreo' >
+			<input class="form" type="text" name='txtCorreo' maxlength="70">
 		</div> 
 		<div class="aling__input"> 
 			<label>Telefono</label>
-			<input class="form" type="text" name='txtTel' >
+			<input class="form" type="text" name='txtTel' maxlength="10" pattern="[0-9]{10}">
 		</div> 
 		<div class="aling__input"> 
 			<label>RFC</label>
-			<input class="form" type="text" id='txtRFC'name='txtRFC' >
+			<input class="form" type="text" id='txtRFC'name='txtRFC' maxlength="13" >
 		</div> 
      </div>
      <div class="entry-form__header-report"> 
         <div class="aling__input"> 
 			<label>Calle</label>
-			<input class="form" type="text" name='txtCalle' >
+			<input class="form" type="text" name='txtCalle' maxlength="40">
 		</div> 
         <div class="aling__input"> 
 			<label>Num Ext</label>
-			<input class="form" type="text" name='txtNumExt' >
+			<input class="form" type="text" name='txtNumExt'  maxlength="10">
 		</div> 
         <div class="aling__input"> 
 			<label>Num Int</label>
-			<input class="form" type="text" name='txtNumInt' >
+			<input class="form" type="text" name='txtNumInt'  maxlength="10" pattern="[0-9]{1,10}">
 		</div> 
     </div>
    <div class="entry-form__header-report"> 
         <div class="aling__input"> 
 			<label>Colonia</label>
-			<input class="form" type="text" name='txtCol' >
+			<input class="form" type="text" name='txtCol' maxlength="40">
 		</div> 
          <div class="aling__input"> 
 			<label>C.P.</label>
-			<input class="form" type="text" name='txtCP' >
+			<input class="folio" type="text" name='txtCP'  maxlength="5" pattern="[0-9]{5}">
 		</div> 
         <div class="aling__input"> 
 			<label>Localidad</label>
-			<input class="form" type="text" name='txtLoc' >
+			<input class="form" type="text" name='txtLoc' maxlength="50">
 		</div> 
 	</div>
 	<div class="buttons">

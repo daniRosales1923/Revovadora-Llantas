@@ -12,9 +12,9 @@
 		    $Host = "localhost";
 			$User = "postgres";
 			//Dani
-			//$Password= "1234";
+			$Password= "1234";
 			//Jona
-			$Password= "benji$99";
+			// $Password= "benji$99";
 			$DataBase = "Renovadora";
 		}
 

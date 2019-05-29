@@ -138,7 +138,7 @@ var printContents = document.getElementById('Imp').outerHTML;
 		$ClsCn->Conecta();
 		$result = $ClsCn->EjecutaConsulta($query);
 		$rows =pg_numrows($result);
-			$tabla = "<input type='image' onclick='imprimir();'  src='../assets/img/impresora.png' width='30px' height='30px'>
+			$tabla = "<input class='print' type='image' onclick='imprimir();'  src='../assets/img/impresora.png' width='30px' height='30px'>
 			<div id='Imp' class='content__table-report'><table>\n
 					<thead>\n
 					<tr bgcolor='blue' >\n
