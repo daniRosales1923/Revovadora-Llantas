@@ -159,6 +159,20 @@
 				$ClsCn->Desconecta();
 				return $ban;
 		}
+		
+		function AltaClientes($prmNombre, $prmApPat, $prmApMat, $prmCorreo, $prmTel, $prmRFC, $prmCalle, $prmNumExt, $prmNumInt,$prmCol, $prmCp, $prmLoc){
+			global $ClsCn;
+			$query = "INSERT INTO cliente(nombre, apellidopaterno, apellidomaterno, rfc, correo, telefono, calle, numext, numint, colonia, cp, localidad, status) VALUES ('$prmNombre', '$prmApPat', '$prmApMat', '$prmRFC', '$prmCorreo', '$prmTel', '$prmCalle', '$prmNumExt', '$prmNumInt', '$prmCol', '$prmCp', '$prmLoc','AC')";
+			$ClsCn->Conecta();
+			$Rst = $ClsCn->EjecutaConsulta($query);
+			if($Rst)
+					$ban = 1;
+				else
+					$ban =0;
+			$ClsCn->Desconecta();
+			return $ban;
+			
+		}
 	}
 
 

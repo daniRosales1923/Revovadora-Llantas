@@ -126,7 +126,7 @@ function checar(){
 	<div class="buttons">
 		<input class="buttons-save" type="submit" id="Guardar" name="Guardar" value="Guardar" style="visibility:hidden; display:none">
 	</div>
-</form>';
+</form>
 
 <?php 
 	if (isset($_REQUEST['Guardar'])){

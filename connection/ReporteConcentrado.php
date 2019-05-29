@@ -44,6 +44,19 @@
     crossorigin="anonymous">
     <link rel="stylesheet" href = "../assets/css/entry.css">
 <title>REPORTE CONCENTRADO RENOVADO</title>
+<script>
+function imprimir(){
+var printContents = document.getElementById('Imp').outerHTML;
+        w = window.open();
+		w.document.write('<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href = "../assets/css/entry.css"><body><center>REPORTE DE CONCENTRADO </center>');
+        w.document.write(printContents);
+		w.document.write('</body></html>');
+        w.document.close(); // necessary for IE >= 10
+        w.focus(); // necessary for IE >= 10
+		w.print();
+		w.close();
+        return true;}
+</script>
 </head>
 
 <body style="background-color: #9c99998a">
@@ -100,7 +113,8 @@ where c.idconcentrado = cr.idconcentrado and c.idusuario = u.idusuario and cr.id
 		$ClsCn->Conecta();
 		$result = $ClsCn->EjecutaConsulta($query);
 		$rows =pg_numrows($result);
-			$tabla = "<div class='content__table-report'><table >\n
+			$tabla = "<input type='image' onclick='imprimir();'  src='../assets/img/impresora.png' width='30px' height='30px'>
+			<div id='Imp' class='content__table-report'><table >\n
 					<thead>\n
 					<tr>\n
 					<th>  FOLIO  </th>\n
