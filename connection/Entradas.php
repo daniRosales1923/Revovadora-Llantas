@@ -130,7 +130,7 @@
 		$cliente = $_REQUEST['ddlCliente'];
 		$comentario = $_REQUEST['txtComentario'];
 		$Folio = "";
-		$erorG=""
+		$erorG="";
 		if($cliente !=-1){
 			if ($Ins->AltaEntradas($idUsr,$comentario, $cliente)==1){
 				$consulta = "select max(folioentrada) as folio from entrada";
