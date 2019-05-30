@@ -130,7 +130,6 @@
 		$cliente = $_REQUEST['ddlCliente'];
 		$comentario = $_REQUEST['txtComentario'];
 		$Folio = "";
-		$erorG="";
 		if($cliente !=-1){
 			if ($Ins->AltaEntradas($idUsr,$comentario, $cliente)==1){
 				$consulta = "select max(folioentrada) as folio from entrada";
@@ -147,7 +146,8 @@
 				echo "<h1>Error</h1>";
 		}
 		else{
-			$erorG="Selecciona un cliente";
+			echo "Selecciona un cliente...";
+			Restaura('');
 		}
 	}
 	
@@ -196,8 +196,8 @@
 						<input class="form" id="txtUsuario"name="txtUsuario" type="text" value = "('. $Usr. ')'. $Usrname.'" readonly > 
 					</div> 
 					<div class="aling__input"> 
-						<label name = "lblStatus" >'.$ImgPlus.'Cliente</label> 
-						'.LlenaComboCliente($_SESSION["idcliente"]).' 
+						<label name = "lblStatus" >'.$ImgPlus. 'Cliente</label> 
+						'.LlenaComboCliente($_SESSION["idcliente"]).'
 					</div> 
 					
 				</div> 

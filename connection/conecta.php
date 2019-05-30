@@ -12,9 +12,9 @@
 		    $Host = "localhost";
 			$User = "postgres";
 			//Dani
-			$Password= "1234";
+			//$Password= "1234";
 			//Jona
-			// $Password= "benji$99";
+			 $Password= "benji$99";
 			$DataBase = "Renovadora";
 		}
 
@@ -47,11 +47,11 @@
                     return $this->EjecutaConsulta("Select U.idusuario, U.nombre, U.apellidopaterno, U.apellidomaterno, U.correo, U.telefono,  U.usuario, U.status from usuario AS U ". $Condicion);
                 }
 	                else{
-                    echo "Llene el campo Usuario";
+                  $msj ="Llene el campo Usuario";
                 }
             }
             else{
-                echo "Llene el campo Usuario";
+                $msj= "Llene el campo Usuario";
             }
         }
 

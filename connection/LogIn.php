@@ -20,11 +20,49 @@
            <div class="icon">
                 <i class="fas fa-user fa-3x"></i>
            </div>
-            <form class="form" method="POST" action="VerificaLogin.php">
+            <form class="form" method="POST" >
                 <input class="form__input" type=“text” placeholder="Usuario*" name=“txtusr” />
                 <input class="form__input" type="password" placeholder="Contraseña*" name=“txtpwd” />
-                <input class="button-save" value="Ingresar" type="submit" />
+                <input class="button-save"name="Login" value="Ingresar" type="submit" />
             </form>
        </div>
     </body>
 </html>
+
+<?php
+       
+        include("conecta.php");
+        $ClsCn = new ConexionDatos();
+        $ClsCn->conecta();
+		$usr= "";
+		$pwd="";
+		if(isset($_REQUEST['Login'])){
+			$usr= $_REQUEST['“txtusr”'];
+			$pwd=$_REQUEST['“txtpwd”'];
+			if ($usr!= "" and $pwd!=""){
+				$result = $ClsCn->DatosUsuario($usr, $pwd);
+				$rows =pg_numrows($result);
+				if($rows>0){
+					$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
+					$IdUsr = $arr["idusuario"];
+					if ($IdUsr != ""){
+							/* variables de sesion para los usuarios */
+							$_SESSION['idusr'] = $arr['idusuario'];
+							$_SESSION['nombre'] = $arr['nombre'];
+							$_SESSION['apellido'] = $arr['apellidopaterno'];
+							$_SESSION['usuario'] = $arr['usuario'];
+							
+							$_SESSION['start'] = time();
+							$_SESSION['expire'] = $_SESSION['start'] + (10 * 60) ;
+							header('Location: Menu.php');
+							die() ;
+					}
+					$ClsCn->Desconecta();
+				}
+				else
+					echo	'<script language="javascript"> '."alert('Verifica tu usuario y contraseña')".'</script>';
+			}
+			else
+					echo	'<script language="javascript"> '."alert('Llena los campos...')".'</script>';
+		}
+?>
