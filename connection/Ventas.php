@@ -126,19 +126,27 @@
 		global $ClsCn, $Ins, $idUsr;
 		$Cliente = $_REQUEST['ddlCliente'];
 		$Folio = "";
-		if ($Ins->AltaSalida($idUsr,$Cliente)==1){
-			$consulta = "select max(idsalida) as folio from salidas";
-			$ClsCn->Conecta();
-			$rst = $ClsCn->EjecutaConsulta($consulta);
-			if(pg_num_rows($rst)>0){
-				 $arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
-				 $Folio = $arr["folio"];
-			}
-			$ClsCn->Desconecta();
-				Restaura($Folio);
-			}
-		else
-			echo "<h1>Error</h1>";
+		$erorG="";
+		if($Cliente !=-1){
+			if ($Ins->AltaSalida($idUsr,$Cliente)==1){
+				$consulta = "select max(idsalida) as folio from salidas";
+				$ClsCn->Conecta();
+				$rst = $ClsCn->EjecutaConsulta($consulta);
+				if(pg_num_rows($rst)>0){
+					 $arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
+					 $Folio = $arr["folio"];
+				}
+				$ClsCn->Desconecta();
+					Restaura($Folio);
+				}
+			else
+				echo "<h1>Error</h1>";
+		}
+		else{
+			
+			echo "Selecciona un cliente...";
+			Restaura('');
+		}
 	}
 	
 	function Restaura($prmFolio){
