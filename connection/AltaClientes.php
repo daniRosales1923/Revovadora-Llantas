@@ -37,53 +37,53 @@
 	<div class="entry-form__header-report"> 
 		<div class="aling__input"> 
 			<label id='lblNombre'> Nombre </label>
-			<input class="form" type="text" name='txtNombre' maxlength="50" pattern="[a-zA-Z]">
+			<input class="form" type="text" name='txtNombre' minlength="3" maxlength="50" pattern="[a-zA-Z]" require>
 		</div> 
 		<div class="aling__input"> 
 			<label id='lblApellidoP'>Apellido Paterno</label>
-			<input class="form" type="text" name='txtApePat' maxlength="50" pattern="[0-9]{10}">
+			<input class="form" type="text" name='txtApePat' minlength="3" maxlength="50" pattern="[a-zA-Z]" require>
 		</div> 
 		<div class="aling__input"> 
 			<label id='lblApellidoM'>Apellido Materno</label>
-			<input class="form" type="text" name='txtApeMat' maxlength="50" pattern="[0-9]{10}">
+			<input class="form" type="text" name='txtApeMat' minlength="3" maxlength="50" pattern="[a-zA-Z]" require>
 		</div> 
 	</div> 
 	<div class="entry-form__header-report"> 
 		<div class="aling__input"> 
 			<label id='lblCorreo'> Correo</label>
-			<input class="form" type="text" name='txtCorreo' maxlength="70">
+			<input class="form" type="text" name='txtCorreo'  minlength="10" maxlength="70" require>
 		</div> 
 		<div class="aling__input"> 
 			<label>Telefono</label>
-			<input class="form" type="text" name='txtTel' maxlength="10" pattern="[0-9]{10}">
+			<input class="form" type="text" name='txtTel' maxlength="10" pattern="[0-9]{10}" require>
 		</div> 
 		<div class="aling__input"> 
 			<label>RFC</label>
-			<input class="form" type="text" id='txtRFC'name='txtRFC' maxlength="13" >
+			<input class="form" type="text" id='txtRFC'name='txtRFC' maxlength="13" require>
 		</div> 
      </div>
      <div class="entry-form__header-report"> 
         <div class="aling__input"> 
 			<label>Calle</label>
-			<input class="form" type="text" name='txtCalle' maxlength="40">
+			<input class="form" type="text" name='txtCalle'  minlength="10"  maxlength="40">
 		</div> 
         <div class="aling__input"> 
 			<label>Num Ext</label>
-			<input class="form" type="text" name='txtNumExt'  maxlength="10">
+			<input class="folio" type="text" name='txtNumExt'  maxlength="10" pattern="[0-9]{0,9}+[a-zA-z]{1}">
 		</div> 
         <div class="aling__input"> 
 			<label>Num Int</label>
-			<input class="form" type="text" name='txtNumInt'  maxlength="10" pattern="[0-9]{1,10}">
+			<input class="folio" type="text" name='txtNumInt'  maxlength="10" pattern="[0-9]{0,9}+[a-zA-z]{1}">
 		</div> 
     </div>
    <div class="entry-form__header-report"> 
         <div class="aling__input"> 
 			<label>Colonia</label>
-			<input class="form" type="text" name='txtCol' maxlength="40">
+			<input class="form" type="text" name='txtCol'  minlength="10" maxlength="40">
 		</div> 
          <div class="aling__input"> 
 			<label>C.P.</label>
-			<input class="folio" type="text" name='txtCP'  maxlength="5" pattern="[0-9]{5}">
+			<input class="folio" type="text" name='txtCP' maxlength="5" pattern="[0-9]{5}" require>
 		</div> 
         <div class="aling__input"> 
 			<label>Localidad</label>
@@ -91,7 +91,8 @@
 		</div> 
 	</div>
 	<div class="buttons">
-		<input class="buttons-save" type="submit" id="Guardar" name="Guardar" value="Guardar">
+		<pre>{{form.invalid| json}}</pre>
+		<input class="buttons-save" type="submit" id="Guardar" name="Guardar" value="Guardar" disabled="form.invalid">
 	</div>
 </form>
 
@@ -141,16 +142,19 @@
 				$msj.="Llena el campo apellido materno <br>";
 			if($RFC=="")
 				$msj .= "Llena el campo RFC<br>";
+			else{
+				$Consulta = $Consultas->DatosClientes('', $RFC,'', '', '','', '','AC');
+				$ClsCn->conecta();
+				$result = $ClsCn->EjecutaConsulta($Consulta);
+				$rows = pg_numrows($result);
+				if($rows>0){
+					$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
+				$msj.= 'El RFC Ingresado ya esta registrado con la clave '.$arr['idcliente']. '--'.$arr['nombre'] . '<br>';
+				}
+			}
 			if($Telefono=="")
 				$msj .= "Llena el campo Telefono<br>";
-			$Consulta = $Consultas->DatosClientes('', $RFC,'', '', '','', '','AC');
-			$ClsCn->conecta();
-			$result = $ClsCn->EjecutaConsulta($Consulta);
-			$rows =pg_numrows($result);
-			if($rows>0){
-				$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
-			$msj.= 'El RFC Ingresado ya esta registrado con la clave '.$arr['idcliente']. '--'.$arr['nombre'];
-			}
+		
 			//intenta guardar
 			if($msj==""){
 					if ($Ins->AltaClientes($Nombre, $ApPat, $ApMat, $Correo, $Telefono, $RFC, $calle, $numext, $numint, $colonia, $cp, $localidad)==1)

@@ -130,19 +130,25 @@
 		$cliente = $_REQUEST['ddlCliente'];
 		$comentario = $_REQUEST['txtComentario'];
 		$Folio = "";
-		if ($Ins->AltaEntradas($idUsr,$comentario, $cliente)==1){
-			$consulta = "select max(folioentrada) as folio from entrada";
-			$ClsCn->Conecta();
-			$rst = $ClsCn->EjecutaConsulta($consulta);
-			if(pg_num_rows($rst)>0){
-				 $arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
-				 $Folio = $arr["folio"];
-			}
-			$ClsCn->Desconecta();
-			Restaura($Folio);
-			}
-		else
-			echo "<h1>Error</h1>";
+		$erorG=""
+		if($cliente !=-1){
+			if ($Ins->AltaEntradas($idUsr,$comentario, $cliente)==1){
+				$consulta = "select max(folioentrada) as folio from entrada";
+				$ClsCn->Conecta();
+				$rst = $ClsCn->EjecutaConsulta($consulta);
+				if(pg_num_rows($rst)>0){
+					 $arr = pg_fetch_array($rst, 0, PGSQL_ASSOC);
+					 $Folio = $arr["folio"];
+				}
+				$ClsCn->Desconecta();
+				Restaura($Folio);
+				}
+			else
+				echo "<h1>Error</h1>";
+		}
+		else{
+			$erorG="Selecciona un cliente";
+		}
 	}
 	
 	function Restaura($prmFolioEnt){
@@ -150,7 +156,6 @@
 		$ImgPlus="";
 		if($idUsr==1000 and $Usr="admin")
 			$ImgPlus ='<a title="Nuevo cliente" href="AltaClientes.php" target="_blank" onClick="window.open(this.href, this.target, '."'width=1000,height=600'".'); return false;"> <i class="newUser fas fa-user-plus"></i></a> ';
-			// <img src="../assets/img/Nuevo.png" width="20px" height="20px">
 		$btnGuarda='<input class="buttons-save" type="submit" name="Guardar" value="Guardar" >';
 		if($prmFolioEnt!=""){
 			$Consulta = $Consultas->DatosEntrada($prmFolioEnt,'','AC','');
